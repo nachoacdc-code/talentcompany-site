@@ -4,19 +4,19 @@
 npm create astro@latest -- --template minimal
 ```
 
-> Ã°Å¸Â§â€˜Ã¢â‚¬ÂÃ°Å¸Å¡â‚¬ **Seasoned astronaut?** Delete this file. Have fun!
+> ðŸ§‘â€ðŸš€ **Seasoned astronaut?** Delete this file. Have fun!
 
-## Ã°Å¸Å¡â‚¬ Project Structure
+## ðŸš€ Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
 ```text
 /
-Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ public/
-Ã¢â€Å“Ã¢â€â‚¬Ã¢â€â‚¬ src/
-Ã¢â€â€š   Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ pages/
-Ã¢â€â€š       Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ index.astro
-Ã¢â€â€Ã¢â€â‚¬Ã¢â€â‚¬ package.json
+â”œâ”€â”€ public/
+â”œâ”€â”€ src/
+â”‚   â””â”€â”€ pages/
+â”‚       â””â”€â”€ index.astro
+â””â”€â”€ package.json
 ```
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
@@ -25,7 +25,7 @@ There's nothing special about `src/components/`, but that's where we like to put
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-## Ã°Å¸Â§Å¾ Commands
+## ðŸ§ž Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -178,6 +178,6 @@ Option 2 â€” **Simple on-page A/B snippet (already implemented)**:
 - If CTR improves, expect downstream lift in:
   - form submits and/or bookings (often **+5â€“15%** depending on traffic quality)
 
-## Ã°Å¸â€˜â‚¬ Want to learn more?
+## ðŸ‘€ Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
