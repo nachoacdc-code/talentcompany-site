@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MetaHead from '../../components/MetaHead.astro';
+import Hero from '../../components/Hero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import Footer from '../../components/Footer.astro';
+
+const features = [
+	{ title: 'Brand & identity', description: 'Foundations: voice, visuals, and consistency.' },
+	{ title: 'UI systems', description: 'Reusable components with clean handoff.' },
+	{ title: 'Landing pages', description: 'Messaging-first pages built to convert.' },
+];
+---
+
+<Layout>
+	<MetaHead
+		slot="head"
+		title="Design — TalentCompany"
+		description="Design services: brand, UI systems, and conversion-focused pages."
+		canonical={new URL(Astro.url.pathname, Astro.site ?? 'https://example.com').toString()}
+	/>
+
+	<Hero
+		kicker="Services"
+		title="Design"
+		subtitle="Brand, UI, and web experiences that look great and perform even better."
+		primaryCta={{ label: 'Get a quote', href: 'mailto:hello@talentcompany.com?subject=Design%20project' }}
+		secondaryCta={{ label: 'Back home', href: '/' }}
+	/>
+
+	<FeatureGrid heading="Common deliverables" subheading="A few examples to start from." features={features} />
+
+	<Footer />
+</Layout>
+

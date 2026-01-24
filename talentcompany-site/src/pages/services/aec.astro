@@ -1,0 +1,35 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MetaHead from '../../components/MetaHead.astro';
+import Hero from '../../components/Hero.astro';
+import FeatureGrid from '../../components/FeatureGrid.astro';
+import Footer from '../../components/Footer.astro';
+
+const features = [
+	{ title: 'Visualization', description: 'Fast, clear visuals for stakeholders.' },
+	{ title: 'Workflow tooling', description: 'Automations and templates that save time.' },
+	{ title: 'Marketing sites', description: 'Project pages built for discoverability.' },
+];
+---
+
+<Layout>
+	<MetaHead
+		slot="head"
+		title="AEC — TalentCompany"
+		description="AEC services: visualization, workflow tooling, and project marketing sites."
+		canonical={new URL(Astro.url.pathname, Astro.site ?? 'https://example.com').toString()}
+	/>
+
+	<Hero
+		kicker="Services"
+		title="AEC"
+		subtitle="Support for architecture, engineering, and construction teams—better clarity, faster delivery."
+		primaryCta={{ label: 'Talk to us', href: 'mailto:hello@talentcompany.com?subject=AEC%20project' }}
+		secondaryCta={{ label: 'Back home', href: '/' }}
+	/>
+
+	<FeatureGrid heading="Where we help" subheading="Typical AEC outcomes." features={features} />
+
+	<Footer />
+</Layout>
+

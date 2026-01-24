@@ -1,0 +1,7 @@
+@import "tailwindcss"; /* Tailwind base/components/utilities */
+
+/* App-wide defaults */
+html {
+	color-scheme: dark;
+}
+
