@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MetaHead from '../components/MetaHead.astro';
-import Hero from '../components/Hero.astro';
+import HeroA from '../components/HeroA.astro';
+import HeroB from '../components/HeroB.astro';
 import ContactForm from '../components/ContactForm.astro';
 import CalendlyEmbed from '../components/CalendlyEmbed.astro';
 import Footer from '../components/Footer.astro';
@@ -34,19 +35,49 @@ const orgJsonLd = {
 		jsonLd={orgJsonLd}
 	/>
 
-	<Hero
-		kicker="TalentCompany"
-		title="Flexible Remote Talent for Design & AEC Teams"
-		subtitle="Pre-vetted designers and AEC professionals, ready to plug into your workflow â€” full-time, part-time, or managed teams."
-		primaryCta={{ label: 'Book a call', href: '/#contact' }}
-		secondaryCta={{ label: 'See how it works', href: '/#how-it-works' }}
-	/>
+	{/* Hero A/B (client-side selection; see README) */}
+	<div id="hero-variant-a" data-hero-variant="A">
+		<HeroA />
+	</div>
+	<div id="hero-variant-b" data-hero-variant="B" class="hidden">
+		<HeroB />
+	</div>
+	<script is:inline>
+		{`(() => {
+  const param = new URLSearchParams(window.location.search).get('hero');
+  const stored = window.localStorage.getItem('tc_hero_variant');
+  const variant = (param === 'A' || param === 'B')
+    ? param
+    : (stored === 'A' || stored === 'B')
+      ? stored
+      : (Math.random() < 0.5 ? 'A' : 'B');
+
+  window.localStorage.setItem('tc_hero_variant', variant);
+
+  const a = document.getElementById('hero-variant-a');
+  const b = document.getElementById('hero-variant-b');
+  if (a && b) {
+    a.classList.toggle('hidden', variant !== 'A');
+    b.classList.toggle('hidden', variant !== 'B');
+  }
+
+  // Optional analytics hook (works if you later add GA/Segment/etc.)
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ event: 'hero_variant', hero_variant: variant });
+
+  const active = variant === 'A' ? a : b;
+  const primaryLink = active?.querySelector('a[href*=\"#contact\"], a[href^=\"mailto:\"]');
+  primaryLink?.addEventListener('click', () => {
+    window.dataLayer.push({ event: 'hero_primary_click', hero_variant: variant });
+  });
+})();`}
+	</script>
 
 	<main class="mx-auto max-w-6xl px-6">
 		<section class="py-12 sm:py-14">
 			<div class="rounded-2xl border border-slate-800 bg-slate-900/40 px-6 py-6 sm:px-8">
 				<p class="text-center text-sm font-medium text-slate-300">
-					Senior-level contractors â€¢ US time zone overlap â€¢ Flexible engagements
+					Senior-level contractors Ã¢â‚¬Â¢ US time zone overlap Ã¢â‚¬Â¢ Flexible engagements
 				</p>
 			</div>
 		</section>
@@ -63,13 +94,13 @@ const orgJsonLd = {
 				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
 					<p class="text-base font-semibold text-slate-100">Flexible capacity</p>
 					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Full-time, part-time, or managed teamsâ€”scale up or down without hiring risk.
+						Full-time, part-time, or managed teamsÃ¢â‚¬â€scale up or down without hiring risk.
 					</p>
 				</li>
 				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
 					<p class="text-base font-semibold text-slate-100">Fast matching</p>
 					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Get the right skill set for the right engagement typeâ€”without weeks of sourcing.
+						Get the right skill set for the right engagement typeÃ¢â‚¬â€without weeks of sourcing.
 					</p>
 				</li>
 			</ul>
@@ -88,7 +119,7 @@ const orgJsonLd = {
 					<h3 class="text-base font-semibold text-slate-100">Staff Augmentation</h3>
 					<p class="mt-3 text-sm leading-relaxed text-slate-300">
 						Dedicated talent, fully integrated into your team. Full-time or part-time professionals you manage
-						directly â€” fast onboarding, production-ready.
+						directly Ã¢â‚¬â€ fast onboarding, production-ready.
 					</p>
 					<div class="mt-6 flex flex-wrap gap-3">
 						<a
@@ -143,7 +174,7 @@ const orgJsonLd = {
 					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step 1</p>
 					<p class="mt-2 text-base font-semibold text-slate-100">Tell us your needs</p>
 					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Skills, availability, and engagement typeâ€”so we can match accurately.
+						Skills, availability, and engagement typeÃ¢â‚¬â€so we can match accurately.
 					</p>
 				</li>
 				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
@@ -200,12 +231,12 @@ const orgJsonLd = {
 			<div class="flex flex-col gap-2">
 				<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Contact</h2>
 				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-					Tell us what you need and weâ€™ll suggest the best engagement model.
+					Tell us what you need and weÃ¢â‚¬â„¢ll suggest the best engagement model.
 				</p>
 			</div>
 
 			<div class="mt-8 grid gap-6 lg:grid-cols-2">
-				<ContactForm subject="TalentCompany â€” new inquiry (homepage)" />
+				<ContactForm subject="TalentCompany Ã¢â‚¬â€ new inquiry (homepage)" />
 				<CalendlyEmbed url={import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min'} />
 			</div>
 		</section>
