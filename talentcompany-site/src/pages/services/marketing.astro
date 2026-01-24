@@ -2,6 +2,7 @@
 import Layout from '../../layouts/Layout.astro';
 import MetaHead from '../../components/MetaHead.astro';
 import Hero from '../../components/Hero.astro';
+import ContactSection from '../../components/ContactSection.astro';
 import Footer from '../../components/Footer.astro';
 
 const companyName = 'TalentCompany';
@@ -13,13 +14,15 @@ const meta = {
 };
 
 const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
-const canonical = new URL('/services/marketing', baseUrl).toString();
+const canonical = new URL('/services/marketing/', baseUrl).toString();
 
 const serviceJsonLd = {
 	'@context': 'https://schema.org',
 	'@type': 'Service',
 	name: 'Marketing Staff Augmentation',
+	serviceType: 'Marketing staff augmentation (SEO, PPC, growth, content)',
 	description: meta.description,
+	audience: { '@type': 'Audience', audienceType: 'Business' },
 	provider: {
 		'@type': 'Organization',
 		name: companyName,
@@ -66,11 +69,21 @@ const faqJsonLd = {
 		kicker="Services"
 		title="Top-tier Marketing Talent, on your team."
 		subtitle="Vetted SEO, PPC, growth, content and performance specialists as full-time, part-time or hourly blocks â€” plug them into your stack fast."
-		primaryCta={{ label: 'Book a Marketing Call', href: '/#contact' }}
+		primaryCta={{ label: 'Book a Marketing Call', href: '#contact' }}
 		secondaryCta={{ label: 'Back home', href: '/' }}
 	/>
 
 	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+		<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+			<h2 class="text-xl font-semibold text-white">Who this is for</h2>
+			<ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Teams scaling pipeline and demand gen</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Marketing leaders needing specialist depth</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Founder-led growth that needs hands-on execution</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Companies improving tracking and performance</li>
+			</ul>
+		</section>
+
 		<section>
 			<h2 class="text-xl font-semibold text-white">Engagement Models</h2>
 			<div class="mt-6 grid gap-4 md:grid-cols-2">
@@ -80,6 +93,10 @@ const faqJsonLd = {
 						Embedded marketers: SEO, PPC, Growth, Content Lead, Email/CRM, Analytics â€” join your team and deliver
 						ongoing results.
 					</p>
+					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
+						<li>Best for: consistent execution and channel ownership</li>
+						<li>Typical start: days once goals and access are confirmed</li>
+					</ul>
 				</div>
 				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
 					<h3 class="font-semibold text-slate-100">Hourly Blocks</h3>
@@ -87,6 +104,10 @@ const faqJsonLd = {
 						10 / 25 / 50 hour packs for audits, campaign setups, GA4 migrations, CRO experiments â€” for short
 						tactical needs.
 					</p>
+					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
+						<li>Best for: quick wins, audits, migrations, and experiments</li>
+						<li>Predictable scope: fixed hours for defined outcomes</li>
+					</ul>
 				</div>
 			</div>
 		</section>
@@ -107,6 +128,46 @@ const faqJsonLd = {
 			</ul>
 		</section>
 
+		<section class="mt-12">
+			<h3 class="text-lg font-semibold text-white">What you can expect</h3>
+			<ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Clear goals, reporting cadence, and priorities</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Channel execution aligned to your stack</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Measurement-first work (tracking + attribution hygiene)</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Ability to scale specialists as needs change</li>
+			</ul>
+		</section>
+
+		<section class="mt-12">
+			<h3 class="text-lg font-semibold text-white">Why TalentCompany</h3>
+			<ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Specialist depth without long hiring cycles</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Flexible: FT / PT / hourly blocks</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Fast onboarding into your tools and workflows</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Built for measurable performance outcomes</li>
+			</ul>
+		</section>
+
+		<section class="mt-12" aria-labelledby="related-services-marketing">
+			<h3 id="related-services-marketing" class="text-lg font-semibold text-white">Related services</h3>
+			<div class="mt-4 grid gap-4 md:grid-cols-2">
+				<a
+					href="/services/design/"
+					class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900"
+				>
+					<p class="text-sm font-semibold text-slate-100">Design teams</p>
+					<p class="mt-2 text-sm text-slate-300">Staff augmentation or managed design delivery.</p>
+				</a>
+				<a
+					href="/services/aec/"
+					class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900"
+				>
+					<p class="text-sm font-semibold text-slate-100">AEC staff augmentation</p>
+					<p class="mt-2 text-sm text-slate-300">Revit production, BIM coordination, and drafting support.</p>
+				</a>
+			</div>
+		</section>
+
 		<section class="mt-12" aria-labelledby="faq-marketing">
 			<h3 id="faq-marketing" class="text-lg font-semibold text-white">
 				FAQ
@@ -125,13 +186,17 @@ const faqJsonLd = {
 
 		<section class="mt-14 text-center">
 			<a
-				href="/#contact"
+				href="#contact"
 				class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 			>
 				Book a Marketing Call
 			</a>
 		</section>
 	</main>
+
+	<div class="mx-auto max-w-6xl px-6">
+		<ContactSection subject="TalentCompany â€” new inquiry (marketing service)" />
+	</div>
 
 	<Footer />
 </Layout>

@@ -8,7 +8,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   // Used by @astrojs/sitemap to generate absolute URLs.
   // Set SITE="https://your-domain.com" in your environment for production.
-  site: process.env.SITE ?? 'https://example.com',
+  site: process.env.SITE ?? 'https://talentcompany-site.vercel.app',
 
   // Optimized images via built-in astro:assets using sharp.
   image: {
