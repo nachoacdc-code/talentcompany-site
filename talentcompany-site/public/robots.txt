@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
 
-# Sitemap (replace example.com with your real domain)
-Sitemap: https://example.com/sitemap-index.xml
+# Sitemap
+Sitemap: https://talentcompany-site.vercel.app/sitemap.xml
 
