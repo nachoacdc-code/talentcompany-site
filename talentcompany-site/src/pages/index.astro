@@ -2,86 +2,225 @@
 import Layout from '../layouts/Layout.astro';
 import MetaHead from '../components/MetaHead.astro';
 import Hero from '../components/Hero.astro';
-import FeatureGrid from '../components/FeatureGrid.astro';
-import SubscriptionTable from '../components/SubscriptionTable.astro';
 import Footer from '../components/Footer.astro';
 
-const features = [
-	{
-		title: 'Design',
-		description: 'Brand, UI, and web experiences that convert.',
-		href: '/services/design',
-	},
-	{
-		title: 'AEC',
-		description: 'Architecture/engineering workflows and visualization.',
-		href: '/services/aec',
-	},
-	{
-		title: 'Marketing',
-		description: 'Messaging, landing pages, and content systems.',
-		href: '/services/marketing',
-	},
-	{
-		title: 'Performance',
-		description: 'Fast builds, accessibility, and best practices.',
-	},
-	{
-		title: 'Delivery',
-		description: 'Clear scope, weekly cadence, and tight feedback loops.',
-	},
-	{
-		title: 'Growth',
-		description: 'SEO foundations, analytics-ready, measurable results.',
-	},
-];
+const meta = {
+	title: 'Remote Design & AEC Talent | Flexible Teams & Staff Augmentation',
+	description:
+		'Hire pre-vetted remote designers and AEC professionals through flexible full-time, part-time, or managed team engagements. Scale your capacity without hiring risk.',
+};
 
-const plans = [
-	{
-		name: 'Starter',
-		price: '$1,500',
-		description: 'Ideal for one landing page or a quick refresh.',
-		features: ['1 active request', '48–72h turnaround', 'Async updates'],
-		cta: { label: 'Start Starter', href: 'mailto:hello@talentcompany.com?subject=Starter%20plan' },
-	},
-	{
-		name: 'Team',
-		price: '$3,500',
-		description: 'Best for ongoing site, design, and growth work.',
-		features: ['2 active requests', 'Priority queue', 'Monthly roadmap'],
-		cta: { label: 'Choose Team', href: 'mailto:hello@talentcompany.com?subject=Team%20plan' },
-		highlight: true,
-	},
-	{
-		name: 'Scale',
-		price: '$6,500',
-		description: 'For higher throughput and multi-surface delivery.',
-		features: ['3 active requests', 'Weekly sync', 'Advanced reporting'],
-		cta: { label: 'Talk to us', href: 'mailto:hello@talentcompany.com?subject=Scale%20plan' },
-	},
-];
+const baseUrl = Astro.site ?? 'https://example.com';
+const canonical = new URL('/', baseUrl).toString();
+
+const orgJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Organization',
+	name: 'TalentCompany',
+	url: baseUrl,
+	sameAs: [],
+};
 
 ---
 
 <Layout>
 	<MetaHead
 		slot="head"
-		title="TalentCompany — Services for teams that ship"
-		description="Minimal Astro + Tailwind starter for TalentCompany with service pages and a subscription table."
-		canonical={new URL(Astro.url.pathname, Astro.site ?? 'https://example.com').toString()}
+		title={meta.title}
+		description={meta.description}
+		canonical={canonical}
+		jsonLd={orgJsonLd}
 	/>
 
 	<Hero
 		kicker="TalentCompany"
-		title="Design-led delivery for modern teams"
-		subtitle="A minimal, fast website starter built with Astro and Tailwind. Swap this content for your real offer and ship."
-		primaryCta={{ label: 'Explore services', href: '/#services' }}
-		secondaryCta={{ label: 'Email us', href: 'mailto:hello@talentcompany.com' }}
+		title="Flexible Remote Talent for Design & AEC Teams"
+		subtitle="Pre-vetted designers and AEC professionals, ready to plug into your workflow — full-time, part-time, or managed teams."
+		primaryCta={{ label: 'Book a call', href: '/#contact' }}
+		secondaryCta={{ label: 'See how it works', href: '/#how-it-works' }}
 	/>
 
-	<FeatureGrid id="services" heading="Services" subheading="Pick a lane, or mix and match." features={features} />
+	<main class="mx-auto max-w-6xl px-6">
+		<section class="py-12 sm:py-14">
+			<div class="rounded-2xl border border-slate-800 bg-slate-900/40 px-6 py-6 sm:px-8">
+				<p class="text-center text-sm font-medium text-slate-300">
+					Senior-level contractors • US time zone overlap • Flexible engagements
+				</p>
+			</div>
+		</section>
 
-	<SubscriptionTable plans={plans} />
+		<section class="pb-10 sm:pb-14">
+			<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Why TalentCompany</h2>
+			<ul class="mt-6 grid gap-4 md:grid-cols-3">
+				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-base font-semibold text-slate-100">Pre-vetted, production-ready</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						Experienced specialists who can plug into your tools and process quickly.
+					</p>
+				</li>
+				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-base font-semibold text-slate-100">Flexible capacity</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						Full-time, part-time, or managed teams—scale up or down without hiring risk.
+					</p>
+				</li>
+				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-base font-semibold text-slate-100">Fast matching</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						Get the right skill set for the right engagement type—without weeks of sourcing.
+					</p>
+				</li>
+			</ul>
+		</section>
+
+		<section class="py-10 sm:py-14">
+			<div class="flex flex-col gap-2">
+				<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">What we do</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					Choose staff augmentation for dedicated talent, or managed teams for end-to-end delivery.
+				</p>
+			</div>
+
+			<div class="mt-8 grid gap-4 lg:grid-cols-2">
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Staff Augmentation</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Dedicated talent, fully integrated into your team. Full-time or part-time professionals you manage
+						directly — fast onboarding, production-ready.
+					</p>
+					<div class="mt-6 flex flex-wrap gap-3">
+						<a
+							class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/services/design"
+						>
+							Design
+						</a>
+						<a
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/services/aec"
+						>
+							AEC
+						</a>
+					</div>
+				</article>
+
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Managed Teams</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						PM-led teams delivered as predictable monthly capacity. A streamlined process, clear ownership, and
+						studio-grade output.
+					</p>
+					<div class="mt-6 flex flex-wrap gap-3">
+						<a
+							class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/services/marketing"
+						>
+							Marketing
+						</a>
+						<a
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/services/design"
+						>
+							Design delivery
+						</a>
+					</div>
+				</article>
+			</div>
+		</section>
+
+		<section id="how-it-works" class="py-10 sm:py-14">
+			<div class="flex flex-col gap-2">
+				<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">How it works</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					A simple process designed to get you productive quickly.
+				</p>
+			</div>
+
+			<ol class="mt-8 grid gap-4 lg:grid-cols-3">
+				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step 1</p>
+					<p class="mt-2 text-base font-semibold text-slate-100">Tell us your needs</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						Skills, availability, and engagement type—so we can match accurately.
+					</p>
+				</li>
+				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step 2</p>
+					<p class="mt-2 text-base font-semibold text-slate-100">Get matched fast</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						We introduce vetted talent or a managed team aligned to your workflow.
+					</p>
+				</li>
+				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step 3</p>
+					<p class="mt-2 text-base font-semibold text-slate-100">Start working</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						Collaborate immediately, then scale up or down as priorities change.
+					</p>
+				</li>
+			</ol>
+		</section>
+
+		<section class="py-10 sm:py-14">
+			<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
+				<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+					<div>
+						<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Explore services</h2>
+						<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+							Start with a service page, then reach out to scope a team.
+						</p>
+					</div>
+					<div class="flex flex-wrap gap-3">
+						<a
+							class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/services/design"
+						>
+							Design
+						</a>
+						<a
+							class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/services/aec"
+						>
+							AEC
+						</a>
+						<a
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/services/marketing"
+						>
+							Marketing
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section id="contact" class="pb-16 pt-10 sm:pb-20 sm:pt-14">
+			<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8">
+				<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+					<div>
+						<h2 class="text-xl font-semibold text-white sm:text-2xl">Ready to scale capacity?</h2>
+						<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300">
+							Share your needs and we’ll propose the best engagement type.
+						</p>
+					</div>
+					<div class="flex flex-wrap gap-3">
+						<a
+							class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="mailto:hello@talentcompany.com?subject=TalentCompany%20intro"
+						>
+							Book a call
+						</a>
+						<a
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/#how-it-works"
+						>
+							Review steps
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+	</main>
 
 	<Footer />
 </Layout>
