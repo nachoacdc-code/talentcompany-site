@@ -1,0 +1,110 @@
+---
+export type Props = {
+	/** Formspree endpoint, e.g. https://formspree.io/f/xxxxxx */
+	action?: string;
+	/** Optional redirect URL after submission (Formspree supports `_redirect`) */
+	redirectTo?: string;
+	/** Optional subject for notifications */
+	subject?: string;
+};
+
+const action =
+	Astro.props.action ??
+	import.meta.env.PUBLIC_FORMSPREE_ACTION ??
+	'https://formspree.io/f/yourFormId';
+
+const redirectTo = Astro.props.redirectTo ?? '';
+const subject = Astro.props.subject ?? 'TalentCompany — new inquiry';
+---
+
+<form
+	action={action}
+	method="POST"
+	class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6"
+	aria-label="Contact form"
+>
+	<div class="grid gap-4 sm:grid-cols-2">
+		<div class="sm:col-span-1">
+			<label class="text-sm font-medium text-slate-200" for="name">Name</label>
+			<input
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				id="name"
+				name="name"
+				autocomplete="name"
+				required
+			/>
+		</div>
+
+		<div class="sm:col-span-1">
+			<label class="text-sm font-medium text-slate-200" for="email">Work email</label>
+			<input
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				id="email"
+				name="email"
+				type="email"
+				autocomplete="email"
+				required
+			/>
+		</div>
+
+		<div class="sm:col-span-2">
+			<label class="text-sm font-medium text-slate-200" for="company">Company (optional)</label>
+			<input
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				id="company"
+				name="company"
+				autocomplete="organization"
+			/>
+		</div>
+
+		<div class="sm:col-span-2">
+			<label class="text-sm font-medium text-slate-200" for="interest">Interest</label>
+			<select
+				class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				id="interest"
+				name="interest"
+				required
+			>
+				<option value="design">Design</option>
+				<option value="aec">AEC</option>
+				<option value="marketing">Marketing</option>
+				<option value="managed-teams">Managed Teams</option>
+				<option value="staff-augmentation">Staff Augmentation</option>
+				<option value="other">Other</option>
+			</select>
+		</div>
+
+		<div class="sm:col-span-2">
+			<label class="text-sm font-medium text-slate-200" for="message">What do you need help with?</label>
+			<textarea
+				class="mt-2 min-h-28 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				id="message"
+				name="message"
+				required
+			></textarea>
+		</div>
+	</div>
+
+	{/* Honeypot field to reduce spam */}
+	<div class="hidden" aria-hidden="true">
+		<label for="website">Website</label>
+		<input id="website" name="website" tabindex="-1" autocomplete="off" />
+	</div>
+
+	<input type="hidden" name="_subject" value={subject} />
+	{redirectTo ? <input type="hidden" name="_redirect" value={redirectTo} /> : null}
+
+	<div class="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+		<button
+			type="submit"
+			class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+		>
+			Send message
+		</button>
+		<p class="text-xs leading-relaxed text-slate-400">
+			This form uses Formspree. Set <code class="rounded bg-slate-800 px-1.5 py-0.5">PUBLIC_FORMSPREE_ACTION</code> in
+			your env to enable submissions.
+		</p>
+	</div>
+</form>
+
