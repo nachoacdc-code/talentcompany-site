@@ -1,0 +1,30 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+---
+
+<Layout title="TalentCompany">
+	<main class="mx-auto flex min-h-screen max-w-3xl flex-col justify-center px-6 py-16">
+		<p class="text-sm font-medium tracking-wide text-sky-300">Tailwind is working</p>
+		<h1 class="mt-3 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+			talentcompany-site
+		</h1>
+		<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300">
+			Minimal Astro starter, now styled with Tailwind CSS.
+		</p>
+
+		<div class="mt-8 flex flex-wrap gap-3">
+			<a
+				class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				href="https://astro.build"
+				target="_blank"
+				rel="noreferrer"
+			>
+				Astro docs
+			</a>
+			<span class="inline-flex items-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm text-slate-200">
+				Test class: <code class="ml-2 rounded bg-slate-800 px-2 py-0.5 text-xs text-sky-200">bg-sky-500</code>
+			</span>
+		</div>
+	</main>
+</Layout>
