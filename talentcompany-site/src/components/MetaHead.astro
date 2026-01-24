@@ -1,37 +1,37 @@
 ---
 export type Props = {
 	title: string;
-	description?: string;
+	description: string;
 	canonical?: string;
-	ogImage?: string;
 	jsonLd?: Record<string, any> | Record<string, any>[];
 };
 
 const {
 	title,
-	description = 'TalentCompany — digital, design, and growth services.',
+	description,
 	canonical,
-	ogImage,
 	jsonLd,
 } = Astro.props;
 
-const jsonLdArray = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
+const jsonLdValue = jsonLd ?? null;
 ---
 
 <title>{title}</title>
-{description ? <meta name="description" content={description} /> : null}
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="description" content={description} />
 {canonical ? <link rel="canonical" href={canonical} /> : null}
 
 <meta property="og:title" content={title} />
-{description ? <meta property="og:description" content={description} /> : null}
-{ogImage ? <meta property="og:image" content={ogImage} /> : null}
+<meta property="og:description" content={description} />
 {canonical ? <meta property="og:url" content={canonical} /> : null}
 <meta property="og:type" content="website" />
 
 <meta name="twitter:card" content="summary_large_image" />
-{ogImage ? <meta name="twitter:image" content={ogImage} /> : null}
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
 
-{jsonLdArray.map((data) => (
-	<script type="application/ld+json" set:html={JSON.stringify(data)} />
-))}
+{jsonLdValue ? (
+	<script type="application/ld+json" set:html={JSON.stringify(jsonLdValue)} />
+) : null}
 
