@@ -2,33 +2,116 @@
 import Layout from '../../layouts/Layout.astro';
 import MetaHead from '../../components/MetaHead.astro';
 import Hero from '../../components/Hero.astro';
-import FeatureGrid from '../../components/FeatureGrid.astro';
 import Footer from '../../components/Footer.astro';
 
-const features = [
-	{ title: 'Visualization', description: 'Fast, clear visuals for stakeholders.' },
-	{ title: 'Workflow tooling', description: 'Automations and templates that save time.' },
-	{ title: 'Marketing sites', description: 'Project pages built for discoverability.' },
-];
+const companyName = 'TalentCompany';
+
+const meta = {
+	title: `Hire Revit & BIM specialists | AEC staff augmentation | ${companyName}`,
+	description:
+		'Scale your BIM and technical design capacity with vetted Revit modelers, BIM coordinators and drafting experts. Ongoing part-time or full-time placements, and hourly support for urgent needs.',
+};
+
+const baseUrl = Astro.site ?? 'https://example.com';
+const canonical = new URL('/services/aec', baseUrl).toString();
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'AEC Staff Augmentation — Revit & BIM',
+	description: meta.description,
+	provider: {
+		'@type': 'Organization',
+		name: companyName,
+		url: baseUrl,
+	},
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Is AEC offered as managed teams or staff augmentation?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'AEC engagements are staff augmentation only—contractors join your team and follow your BEP and QA process.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'What tools and workflows do you support?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'We support Revit/BIM production and coordination workflows, adapting to your standards and documentation requirements.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Can we hire for urgent hourly support?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'Yes—hourly contractors can support urgent drafting and BIM needs when timelines are tight.',
+			},
+		},
+	],
+};
 ---
 
 <Layout>
 	<MetaHead
 		slot="head"
-		title="AEC — TalentCompany"
-		description="AEC services: visualization, workflow tooling, and project marketing sites."
-		canonical={new URL(Astro.url.pathname, Astro.site ?? 'https://example.com').toString()}
+		title={meta.title}
+		description={meta.description}
+		canonical={canonical}
+		jsonLd={[serviceJsonLd, faqJsonLd]}
 	/>
 
 	<Hero
 		kicker="Services"
-		title="AEC"
-		subtitle="Support for architecture, engineering, and construction teams—better clarity, faster delivery."
-		primaryCta={{ label: 'Talk to us', href: 'mailto:hello@talentcompany.com?subject=AEC%20project' }}
+		title="BIM & Technical Design Capacity that Fits Your Team"
+		subtitle="Trusted Revit modelers, BIM coordinators and drafting specialists for ongoing placements — integrated into your workflows, no PM needed."
+		primaryCta={{ label: 'See AEC Profiles', href: '/#contact' }}
 		secondaryCta={{ label: 'Back home', href: '/' }}
 	/>
 
-	<FeatureGrid heading="Where we help" subheading="Typical AEC outcomes." features={features} />
+	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+		<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+			<h2 class="text-xl font-semibold text-white">How AEC Engagements Work</h2>
+			<p class="mt-3 text-sm leading-relaxed text-slate-300">
+				Staff augmentation only — full-time, part-time, or hourly contractors who join your team and follow your
+				BEP and QA.
+			</p>
+		</section>
+
+		<section class="mt-12">
+			<h3 class="text-lg font-semibold text-white">AEC Capabilities</h3>
+			<ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+					Architectural drafting
+				</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+					BIM &amp; CAD production
+				</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+					Construction documentation
+				</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+					Technical design support &amp; coordination
+				</li>
+			</ul>
+		</section>
+
+		<section class="mt-14 text-center">
+			<a
+				href="/#contact"
+				class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+			>
+				See AEC Profiles
+			</a>
+		</section>
+	</main>
 
 	<Footer />
 </Layout>

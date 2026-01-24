@@ -2,33 +2,126 @@
 import Layout from '../../layouts/Layout.astro';
 import MetaHead from '../../components/MetaHead.astro';
 import Hero from '../../components/Hero.astro';
-import FeatureGrid from '../../components/FeatureGrid.astro';
 import Footer from '../../components/Footer.astro';
 
-const features = [
-	{ title: 'Messaging', description: 'Positioning, copy, and narrative structure.' },
-	{ title: 'SEO foundations', description: 'Sitemap, metadata, and content structure.' },
-	{ title: 'Content systems', description: 'Pages that are easy to update and scale.' },
-];
+const companyName = 'TalentCompany';
+
+const meta = {
+	title: `Hire Remote Marketing Talent — SEO, PPC, Growth & Content Specialists | ${companyName}`,
+	description:
+		'Scale your marketing team with vetted remote specialists: SEO, paid media, growth, content, performance & demand-gen experts. Flexible full-time, part-time or hourly blocks — fast onboarding and proven results.',
+};
+
+const baseUrl = Astro.site ?? 'https://example.com';
+const canonical = new URL('/services/marketing', baseUrl).toString();
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Marketing Staff Augmentation',
+	description: meta.description,
+	provider: {
+		'@type': 'Organization',
+		name: companyName,
+		url: baseUrl,
+	},
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: [
+		{
+			'@type': 'Question',
+			name: 'Can we hire marketing specialists full-time or part-time?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'Yes—engagements can be full-time, part-time, or hourly blocks depending on your goals and timelines.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'Which roles can you support?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'Common roles include SEO, paid media/PPC, growth, content, email/CRM, and analytics/GA4 specialists.',
+			},
+		},
+		{
+			'@type': 'Question',
+			name: 'How fast can someone onboard?',
+			acceptedAnswer: {
+				'@type': 'Answer',
+				text: 'We aim for fast onboarding so specialists can plug into your stack and start producing quickly.',
+			},
+		},
+	],
+};
 ---
 
 <Layout>
 	<MetaHead
 		slot="head"
-		title="Marketing — TalentCompany"
-		description="Marketing services: messaging, SEO foundations, and content systems."
-		canonical={new URL(Astro.url.pathname, Astro.site ?? 'https://example.com').toString()}
+		title={meta.title}
+		description={meta.description}
+		canonical={canonical}
+		jsonLd={[serviceJsonLd, faqJsonLd]}
 	/>
 
 	<Hero
 		kicker="Services"
-		title="Marketing"
-		subtitle="Clear story, strong pages, and a site structure that grows with your content."
-		primaryCta={{ label: 'Start a project', href: 'mailto:hello@talentcompany.com?subject=Marketing%20project' }}
+		title="Top-tier Marketing Talent, on your team."
+		subtitle="Vetted SEO, PPC, growth, content and performance specialists as full-time, part-time or hourly blocks — plug them into your stack fast."
+		primaryCta={{ label: 'Book a Marketing Call', href: '/#contact' }}
 		secondaryCta={{ label: 'Back home', href: '/' }}
 	/>
 
-	<FeatureGrid heading="What’s included" subheading="A few quick wins we often start with." features={features} />
+	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+		<section>
+			<h2 class="text-xl font-semibold text-white">Engagement Models</h2>
+			<div class="mt-6 grid gap-4 md:grid-cols-2">
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="font-semibold text-slate-100">FT / PT Placements</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Embedded marketers: SEO, PPC, Growth, Content Lead, Email/CRM, Analytics — join your team and deliver
+						ongoing results.
+					</p>
+				</div>
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="font-semibold text-slate-100">Hourly Blocks</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						10 / 25 / 50 hour packs for audits, campaign setups, GA4 migrations, CRO experiments — for short
+						tactical needs.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="mt-12">
+			<h3 class="text-lg font-semibold text-white">Typical Roles</h3>
+			<ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">SEO Specialist</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+					Paid Media / PPC Manager
+				</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Growth Marketer</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Content Lead</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Email / CRM Manager</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">
+					Analytics / GA4 Specialist
+				</li>
+			</ul>
+		</section>
+
+		<section class="mt-14 text-center">
+			<a
+				href="/#contact"
+				class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-6 py-3 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+			>
+				Book a Marketing Call
+			</a>
+		</section>
+	</main>
 
 	<Footer />
 </Layout>
