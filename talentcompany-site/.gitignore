@@ -25,3 +25,10 @@ pnpm-debug.log*
 
 .vercel
 .env*.local
+
+# local temp/audit artifacts
+.tmp/
+lighthouse-*.json
+lighthouse*.json
+webhint.json
+psi-*.json
