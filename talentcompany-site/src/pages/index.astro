@@ -12,7 +12,7 @@ const meta = {
 		'Hire pre-vetted remote designers and AEC professionals through flexible full-time, part-time, or managed team engagements. Scale your capacity without hiring risk.',
 };
 
-const baseUrl = Astro.site ?? 'https://example.com';
+const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
 const canonical = new URL('/', baseUrl).toString();
 
 const orgJsonLd = {
@@ -37,7 +37,7 @@ const orgJsonLd = {
 	<Hero
 		kicker="TalentCompany"
 		title="Flexible Remote Talent for Design & AEC Teams"
-		subtitle="Pre-vetted designers and AEC professionals, ready to plug into your workflow — full-time, part-time, or managed teams."
+		subtitle="Pre-vetted designers and AEC professionals, ready to plug into your workflow â€” full-time, part-time, or managed teams."
 		primaryCta={{ label: 'Book a call', href: '/#contact' }}
 		secondaryCta={{ label: 'See how it works', href: '/#how-it-works' }}
 	/>
@@ -46,7 +46,7 @@ const orgJsonLd = {
 		<section class="py-12 sm:py-14">
 			<div class="rounded-2xl border border-slate-800 bg-slate-900/40 px-6 py-6 sm:px-8">
 				<p class="text-center text-sm font-medium text-slate-300">
-					Senior-level contractors • US time zone overlap • Flexible engagements
+					Senior-level contractors â€¢ US time zone overlap â€¢ Flexible engagements
 				</p>
 			</div>
 		</section>
@@ -63,13 +63,13 @@ const orgJsonLd = {
 				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
 					<p class="text-base font-semibold text-slate-100">Flexible capacity</p>
 					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Full-time, part-time, or managed teams—scale up or down without hiring risk.
+						Full-time, part-time, or managed teamsâ€”scale up or down without hiring risk.
 					</p>
 				</li>
 				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
 					<p class="text-base font-semibold text-slate-100">Fast matching</p>
 					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Get the right skill set for the right engagement type—without weeks of sourcing.
+						Get the right skill set for the right engagement typeâ€”without weeks of sourcing.
 					</p>
 				</li>
 			</ul>
@@ -88,7 +88,7 @@ const orgJsonLd = {
 					<h3 class="text-base font-semibold text-slate-100">Staff Augmentation</h3>
 					<p class="mt-3 text-sm leading-relaxed text-slate-300">
 						Dedicated talent, fully integrated into your team. Full-time or part-time professionals you manage
-						directly — fast onboarding, production-ready.
+						directly â€” fast onboarding, production-ready.
 					</p>
 					<div class="mt-6 flex flex-wrap gap-3">
 						<a
@@ -143,7 +143,7 @@ const orgJsonLd = {
 					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step 1</p>
 					<p class="mt-2 text-base font-semibold text-slate-100">Tell us your needs</p>
 					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Skills, availability, and engagement type—so we can match accurately.
+						Skills, availability, and engagement typeâ€”so we can match accurately.
 					</p>
 				</li>
 				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
@@ -200,12 +200,12 @@ const orgJsonLd = {
 			<div class="flex flex-col gap-2">
 				<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Contact</h2>
 				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-					Tell us what you need and we’ll suggest the best engagement model.
+					Tell us what you need and weâ€™ll suggest the best engagement model.
 				</p>
 			</div>
 
 			<div class="mt-8 grid gap-6 lg:grid-cols-2">
-				<ContactForm subject="TalentCompany — new inquiry (homepage)" />
+				<ContactForm subject="TalentCompany â€” new inquiry (homepage)" />
 				<CalendlyEmbed url={import.meta.env.PUBLIC_CALENDLY_URL ?? 'https://calendly.com/your-org/15min'} />
 			</div>
 		</section>
