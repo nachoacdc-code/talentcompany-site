@@ -14,6 +14,8 @@ const {
 } = Astro.props;
 
 const jsonLdValue = jsonLd ?? null;
+const ogImagePath = '/og-default.svg';
+const ogImageUrl = canonical ? new URL(ogImagePath, canonical).toString() : ogImagePath;
 ---
 
 <title>{title}</title>
@@ -24,12 +26,14 @@ const jsonLdValue = jsonLd ?? null;
 
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
+<meta property="og:image" content={ogImageUrl} />
 {canonical ? <meta property="og:url" content={canonical} /> : null}
 <meta property="og:type" content="website" />
 
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
 
 {jsonLdValue ? (
 	<script type="application/ld+json" set:html={JSON.stringify(jsonLdValue)} />
