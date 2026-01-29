@@ -1,0 +1,88 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MetaHead from '../../components/MetaHead.astro';
+import Footer from '../../components/Footer.astro';
+
+const brand = 'TalentCompany';
+
+const meta = {
+	title: `Privacy Policy | ${brand}`,
+	description:
+		'Privacy policy describing how TalentCompany collects, uses, and protects information for website visitors and business customers.',
+};
+
+const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const canonical = new URL('/privacy/', baseUrl).toString();
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+
+	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+		<header class="max-w-3xl">
+			<p class="text-sm font-semibold tracking-wide text-sky-300">Legal</p>
+			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Privacy Policy</h1>
+			<p class="mt-4 text-sm leading-relaxed text-slate-300 sm:text-base">
+				{/* NOTE: Placeholder content. Replace with counsel-approved policy. */}
+				Effective date: <span class="text-slate-200">TODO</span>
+			</p>
+		</header>
+
+		<div class="mt-10 grid gap-4">
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Information we collect</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: List contact info, business details, inquiry content, and basic usage/analytics data.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">How we use information</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Respond to inquiries, provide services, improve offerings, security, and communications.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Legal bases (where applicable)</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Contract, legitimate interests, consent, and compliance obligations.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Sharing</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Service providers (e.g., analytics, scheduling), business partners as needed, and legal requirements.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Retention</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">TODO: Retention periods and deletion practices.</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Security</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">TODO: Administrative/technical safeguards.</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Your rights</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Access, correction, deletion, objection, portability (as applicable).
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Contact</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Provide an email and/or mailing address for privacy requests.
+				</p>
+			</section>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
+

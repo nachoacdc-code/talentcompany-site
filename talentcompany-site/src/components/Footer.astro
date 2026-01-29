@@ -1,34 +1,87 @@
 ---
 export type Props = {
 	companyName?: string;
-	links?: { label: string; href: string }[];
 };
 
 const {
 	companyName = 'TalentCompany',
-	links = [
-		{ label: 'Home', href: '/' },
-		{ label: 'AEC Talent', href: '/solutions/aec-talent/' },
-		{ label: 'Creative & Design', href: '/solutions/creatives-design/' },
-		{ label: 'Marketing Talent', href: '/solutions/marketing-talent/' },
-		{ label: 'Roles', href: '/roles/' },
-		{ label: 'How It Works', href: '/how-it-works/' },
-	],
 } = Astro.props;
 
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-slate-800/80">
-	<div class="mx-auto flex max-w-6xl flex-col gap-6 px-6 py-10 sm:flex-row sm:items-center sm:justify-between">
-		<p class="text-sm text-slate-400">Â© {year} {companyName}. All rights reserved.</p>
-		<nav class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
-			{links.map((l) => (
-				<a class="text-slate-300 transition hover:text-white" href={l.href}>
-					{l.label}
+<footer class="border-t border-slate-800/80 bg-slate-950">
+	<div class="mx-auto max-w-6xl px-6 py-12">
+		<div class="grid gap-10 md:grid-cols-12">
+			<div class="md:col-span-4">
+				<a
+					href="/"
+					class="inline-flex items-center gap-3 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				>
+					<img src="/favicon.svg" alt={`${companyName} logo`} class="h-8 w-8" loading="lazy" />
+					<span class="text-sm font-semibold tracking-tight text-white">{companyName}</span>
 				</a>
-			))}
-		</nav>
+				<p class="mt-4 max-w-sm text-sm leading-relaxed text-slate-300">
+					Vetted remote talent for US teams across AEC, creative &amp; design, and marketing.
+				</p>
+			</div>
+
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Solutions</p>
+				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer solutions">
+					<a class="text-slate-300 transition hover:text-white" href="/solutions/aec-talent/">AEC Talent</a>
+					<a class="text-slate-300 transition hover:text-white" href="/solutions/creatives-design/">Creative &amp; Design</a>
+					<a class="text-slate-300 transition hover:text-white" href="/solutions/marketing-talent/">Marketing Talent</a>
+				</nav>
+			</div>
+
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Roles</p>
+				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer roles">
+					<a class="text-slate-300 transition hover:text-white" href="/roles/">Roles directory</a>
+					<a class="text-slate-300 transition hover:text-white" href="/roles/architectural-designer/">Architectural Designer</a>
+					<a class="text-slate-300 transition hover:text-white" href="/roles/bim-coordinator/">BIM Coordinator</a>
+					<a class="text-slate-300 transition hover:text-white" href="/roles/revit-drafter/">Revit Drafter</a>
+				</nav>
+			</div>
+
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Company</p>
+				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer company">
+					<a class="text-slate-300 transition hover:text-white" href="/how-it-works/">How It Works</a>
+					<a class="text-slate-300 transition hover:text-white" href="/#contact">Contact</a>
+				</nav>
+
+				<p class="mt-6 text-xs font-semibold uppercase tracking-wide text-slate-400">Legal</p>
+				<nav class="mt-4 grid gap-2 text-sm" aria-label="Footer legal">
+					<a class="text-slate-300 transition hover:text-white" href="/terms/">Terms</a>
+					<a class="text-slate-300 transition hover:text-white" href="/privacy/">Privacy</a>
+					<a class="text-slate-300 transition hover:text-white" href="/cookies/">Cookies</a>
+				</nav>
+			</div>
+
+			<div class="md:col-span-2">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Get started</p>
+				<p class="mt-4 text-sm leading-relaxed text-slate-300">
+					Book a quick call to confirm your needs and get matched.
+				</p>
+				<a
+					href="/#contact"
+					class="mt-5 inline-flex w-full items-center justify-center rounded bg-sky-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				>
+					Book a Call
+				</a>
+			</div>
+		</div>
+
+		<div class="mt-12 flex flex-col gap-3 border-t border-slate-800/80 pt-6 sm:flex-row sm:items-center sm:justify-between">
+			<p class="text-xs text-slate-400">© {year} {companyName}. All rights reserved.</p>
+			<div class="flex flex-wrap gap-x-6 gap-y-2 text-xs">
+				<a class="text-slate-400 transition hover:text-white" href="/terms/">Terms</a>
+				<a class="text-slate-400 transition hover:text-white" href="/privacy/">Privacy</a>
+				<a class="text-slate-400 transition hover:text-white" href="/cookies/">Cookies</a>
+			</div>
+		</div>
 	</div>
 </footer>
 

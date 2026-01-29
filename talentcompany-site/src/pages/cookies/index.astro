@@ -1,0 +1,72 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MetaHead from '../../components/MetaHead.astro';
+import Footer from '../../components/Footer.astro';
+
+const brand = 'TalentCompany';
+
+const meta = {
+	title: `Cookie Policy | ${brand}`,
+	description:
+		'Cookie policy explaining how TalentCompany uses cookies and similar technologies, and how you can manage preferences.',
+};
+
+const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const canonical = new URL('/cookies/', baseUrl).toString();
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+
+	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+		<header class="max-w-3xl">
+			<p class="text-sm font-semibold tracking-wide text-sky-300">Legal</p>
+			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Cookie Policy</h1>
+			<p class="mt-4 text-sm leading-relaxed text-slate-300 sm:text-base">
+				{/* NOTE: Placeholder content. Replace with your finalized cookie details and vendor list. */}
+				Effective date: <span class="text-slate-200">TODO</span>
+			</p>
+		</header>
+
+		<div class="mt-10 grid gap-4">
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">What cookies are</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Define cookies and similar technologies (pixels, local storage).
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">How we use cookies</h2>
+				<ul class="mt-4 grid gap-2 text-sm text-slate-300">
+					<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">
+						<strong class="text-slate-100">Essential</strong>: site functionality and security.
+					</li>
+					<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">
+						<strong class="text-slate-100">Analytics</strong>: understand usage and improve the site.
+					</li>
+					<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">
+						<strong class="text-slate-100">Marketing</strong>: measure campaigns (if enabled).
+					</li>
+				</ul>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Managing preferences</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: How users can manage cookies via browser settings and (if implemented) a consent banner.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Cookie list</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Add vendor list (name, purpose, duration, type) once finalized.
+				</p>
+			</section>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
+

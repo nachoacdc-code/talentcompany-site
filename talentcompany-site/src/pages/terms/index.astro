@@ -1,0 +1,90 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import MetaHead from '../../components/MetaHead.astro';
+import Footer from '../../components/Footer.astro';
+
+const brand = 'TalentCompany';
+
+const meta = {
+	title: `Terms & Conditions | ${brand}`,
+	description:
+		'Terms and conditions for using TalentCompany services and website. Review key policies on usage, payments, liability, and more.',
+};
+
+const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const canonical = new URL('/terms/', baseUrl).toString();
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+
+	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+		<header class="max-w-3xl">
+			<p class="text-sm font-semibold tracking-wide text-sky-300">Legal</p>
+			<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">Terms &amp; Conditions</h1>
+			<p class="mt-4 text-sm leading-relaxed text-slate-300 sm:text-base">
+				{/* NOTE: Placeholder content. Replace with your counsel-approved terms. */}
+				Effective date: <span class="text-slate-200">TODO</span>
+			</p>
+		</header>
+
+		<div class="mt-10 grid gap-4">
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Overview</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Describe the services, who the terms apply to, and how updates are communicated.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Services</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Define offerings (individuals, teams, PM-led delivery), scope boundaries, and deliverable expectations.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Payments, billing, and refunds</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Include billing cadence, invoices, late fees, refunds/credits, and month-to-month terms.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Confidentiality and IP</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Address confidentiality, ownership of work product, and permitted use.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Acceptable use</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Prohibited activities, security expectations, and compliance requirements.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Disclaimers and limitation of liability</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Standard B2B disclaimers and liability caps (counsel-reviewed).
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Termination</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">
+					TODO: Termination rules, notice periods, and post-termination obligations.
+				</p>
+			</section>
+
+			<section class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<h2 class="text-lg font-semibold text-white">Governing law</h2>
+				<p class="mt-3 text-sm leading-relaxed text-slate-300">TODO: Jurisdiction, venue, and dispute resolution.</p>
+			</section>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
+
