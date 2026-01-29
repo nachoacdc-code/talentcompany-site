@@ -94,7 +94,7 @@ const links = {
 					id="solutions-menu"
 					role="menu"
 					aria-label="Solutions"
-					class="absolute left-0 mt-2 w-72 rounded-2xl border border-slate-800 bg-slate-950/95 p-2 shadow-xl shadow-black/30"
+					class="absolute left-0 mt-2 w-72 rounded-2xl border border-slate-700/60 bg-slate-900/95 p-2 shadow-2xl shadow-black/40 ring-1 ring-slate-700/40 backdrop-blur-xl"
 				>
 					{links.solutions.items.map((item) => (
 						(() => {
@@ -103,7 +103,7 @@ const links = {
 						<a
 							role="menuitem"
 							href={item.href}
-							class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-900 text-white font-semibold' : ''}`}
+							class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-800/70 text-white font-semibold' : ''}`}
 							aria-current={active ? 'page' : undefined}
 						>
 							{item.label}
@@ -140,7 +140,7 @@ const links = {
 					id="roles-menu"
 					role="menu"
 					aria-label="Roles"
-					class="absolute left-1/2 mt-2 w-[44rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-2xl border border-slate-800 bg-slate-950/95 p-4 shadow-xl shadow-black/30"
+					class="absolute left-1/2 mt-2 w-[44rem] max-w-[calc(100vw-2rem)] -translate-x-1/2 rounded-2xl border border-slate-700/60 bg-slate-900/95 p-4 shadow-2xl shadow-black/40 ring-1 ring-slate-700/40 backdrop-blur-xl"
 				>
 					<div class="grid gap-6 md:grid-cols-3">
 						{links.roles.groups.map((group) => (
@@ -153,7 +153,7 @@ const links = {
 											<a
 												role="menuitem"
 												href={item.href}
-												class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-900 text-white font-semibold' : ''}`}
+												class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-800/70 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-800/70 text-white font-semibold' : ''}`}
 												aria-current={active ? 'page' : undefined}
 											>
 												{item.label}
@@ -163,7 +163,7 @@ const links = {
 									<a
 										role="menuitem"
 										href={links.roles.all.href}
-										class={`mt-2 block rounded-xl px-3 py-2 text-sm font-semibold text-sky-300 transition hover:bg-slate-900 hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${pathname === links.roles.all.href ? 'bg-slate-900' : ''}`}
+										class={`mt-2 block rounded-xl px-3 py-2 text-sm font-semibold text-sky-300 transition hover:bg-slate-800/70 hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${pathname === links.roles.all.href ? 'bg-slate-800/70' : ''}`}
 									>
 										{links.roles.all.label} <span aria-hidden="true">→</span>
 									</a>
@@ -215,7 +215,7 @@ const links = {
 					{links.home.label}
 				</a>
 
-				<details class="group rounded-xl border border-slate-800 bg-slate-950/40" data-nav-dropdown="solutions-mobile">
+				<details class="group rounded-xl border border-slate-700/60 bg-slate-900/40" data-nav-dropdown="solutions-mobile">
 					<summary
 						class="flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
 						aria-haspopup="menu"
@@ -256,7 +256,7 @@ const links = {
 					</div>
 				</details>
 
-				<details class="group rounded-xl border border-slate-800 bg-slate-950/40" data-nav-dropdown="roles-mobile">
+				<details class="group rounded-xl border border-slate-700/60 bg-slate-900/40" data-nav-dropdown="roles-mobile">
 					<summary
 						class={`flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${isRoles ? linkActive : ''}`}
 						aria-haspopup="menu"
@@ -330,7 +330,7 @@ const links = {
 	</div>
 
 	<script is:inline>
-		{`(() => {
+		(() => {
   const header = document.currentScript?.closest('header');
   if (!header) return;
 
@@ -371,36 +371,85 @@ const links = {
     }
   });
 
-  // When clicking a dropdown summary, close any other open dropdowns.
-  // Use capture phase so this runs before the browser toggles <details>.
-  header.addEventListener('click', (e) => {
-    const target = e.target;
-    if (!(target instanceof Element)) return;
-    const summary = target.closest('summary');
-    if (!summary) return;
-    const details = summary.closest('details[data-nav-dropdown]');
-    if (!details) return;
-    header.querySelectorAll('details[data-nav-dropdown][open]').forEach((other) => {
-      if (other !== details) other.removeAttribute('open');
+  // Get desktop dropdowns (in the primary nav, not mobile menu)
+  const desktopDropdowns = header.querySelectorAll('nav[aria-label="Primary"] details[data-nav-dropdown]');
+  
+  // Close all other dropdowns when clicking on a summary
+  // Use pointerdown which fires BEFORE the native details toggle
+  desktopDropdowns.forEach((details) => {
+    const summary = details.querySelector('summary');
+    
+    // Initialize aria-expanded
+    summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
+    
+    // Close other dropdowns BEFORE native toggle (pointerdown fires first)
+    summary?.addEventListener('pointerdown', () => {
+      desktopDropdowns.forEach((other) => {
+        if (other !== details && other.hasAttribute('open')) {
+          other.removeAttribute('open');
+          const otherSummary = other.querySelector('summary');
+          otherSummary?.setAttribute('aria-expanded', 'false');
+        }
+      });
     });
-  }, true);
+    
+    // Sync aria-expanded on toggle
+    details.addEventListener('toggle', () => {
+      summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
+    });
+  });
 
-  // Keep aria-expanded in sync for dropdown summaries.
-  header.querySelectorAll('details[data-nav-dropdown]').forEach((details) => {
+  // Hover-to-open on desktop pointer devices
+  const canHover = window.matchMedia?.('(hover: hover) and (pointer: fine)')?.matches;
+  if (canHover) {
+    desktopDropdowns.forEach((details) => {
+      let closeTimer = null;
+      
+      const handleMouseEnter = () => {
+        if (closeTimer) {
+          clearTimeout(closeTimer);
+          closeTimer = null;
+        }
+        // Close all other dropdowns first
+        desktopDropdowns.forEach((other) => {
+          if (other !== details && other.hasAttribute('open')) {
+            other.removeAttribute('open');
+            const otherSummary = other.querySelector('summary');
+            otherSummary?.setAttribute('aria-expanded', 'false');
+          }
+        });
+        // Then open this dropdown
+        if (!details.hasAttribute('open')) {
+          details.setAttribute('open', '');
+          const summary = details.querySelector('summary');
+          summary?.setAttribute('aria-expanded', 'true');
+        }
+      };
+      
+      const handleMouseLeave = () => {
+        if (closeTimer) clearTimeout(closeTimer);
+        closeTimer = setTimeout(() => {
+          details.removeAttribute('open');
+          const summary = details.querySelector('summary');
+          summary?.setAttribute('aria-expanded', 'false');
+        }, 150);
+      };
+      
+      details.addEventListener('mouseenter', handleMouseEnter);
+      details.addEventListener('mouseleave', handleMouseLeave);
+    });
+  }
+
+  // Mobile dropdowns - let native details behavior work, just sync aria
+  const mobileDropdowns = header.querySelectorAll('[data-nav-mobile-menu] details[data-nav-dropdown]');
+  
+  mobileDropdowns.forEach((details) => {
     const summary = details.querySelector('summary');
     const sync = () => summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
     sync();
-    details.addEventListener('toggle', () => {
-      // Ensure only one dropdown is open at a time.
-      if (details.hasAttribute('open')) {
-        header.querySelectorAll('details[data-nav-dropdown][open]').forEach((other) => {
-          if (other !== details) other.removeAttribute('open');
-        });
-      }
-      sync();
-    });
+    details.addEventListener('toggle', sync);
   });
-})();`}
+})();
 	</script>
 </header>
 
