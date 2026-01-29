@@ -1,4 +1,17 @@
 ---
+const pathname = Astro.url.pathname;
+
+const isHome = pathname === '/';
+const isSolutions = pathname.startsWith('/solutions/');
+const isRoles = pathname.startsWith('/roles/');
+const isHowItWorks = pathname.startsWith('/how-it-works/');
+
+const linkBase =
+	'transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
+const linkDesktopBase = `rounded-md px-1 py-2 ${linkBase}`;
+const linkMobileBase = `rounded-xl px-3 py-3 ${linkBase}`;
+const linkActive = 'text-white font-semibold';
+
 const links = {
 	home: { label: 'Home', href: '/' },
 	solutions: {
@@ -27,14 +40,15 @@ const links = {
 		<nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex" aria-label="Primary">
 			<a
 				href={links.home.href}
-				class="rounded-md px-1 py-2 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				class={`${linkDesktopBase} ${isHome ? linkActive : ''}`}
+				aria-current={isHome ? 'page' : undefined}
 			>
 				{links.home.label}
 			</a>
 
 			<details class="group relative" data-nav-dropdown="solutions">
 				<summary
-					class="flex cursor-pointer list-none items-center gap-2 rounded-md px-1 py-2 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					class={`flex cursor-pointer list-none items-center gap-2 ${linkDesktopBase} ${isSolutions ? linkActive : ''}`}
 					aria-haspopup="menu"
 					aria-expanded="false"
 					aria-controls="solutions-menu"
@@ -61,27 +75,35 @@ const links = {
 					class="absolute left-0 mt-2 w-72 rounded-2xl border border-slate-800 bg-slate-950/95 p-2 shadow-xl shadow-black/30"
 				>
 					{links.solutions.items.map((item) => (
+						(() => {
+							const active = pathname.startsWith(item.href);
+							return (
 						<a
 							role="menuitem"
 							href={item.href}
-							class="block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							class={`block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-900 text-white font-semibold' : ''}`}
+							aria-current={active ? 'page' : undefined}
 						>
 							{item.label}
 						</a>
+							);
+						})()
 					))}
 				</div>
 			</details>
 
 			<a
 				href={links.roles.href}
-				class="rounded-md px-1 py-2 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				class={`${linkDesktopBase} ${isRoles ? linkActive : ''}`}
+				aria-current={isRoles ? 'page' : undefined}
 			>
 				{links.roles.label}
 			</a>
 
 			<a
 				href={links.howItWorks.href}
-				class="rounded-md px-1 py-2 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				class={`${linkDesktopBase} ${isHowItWorks ? linkActive : ''}`}
+				aria-current={isHowItWorks ? 'page' : undefined}
 			>
 				{links.howItWorks.label}
 			</a>
@@ -111,7 +133,8 @@ const links = {
 			<div class="flex flex-col gap-2 text-sm text-slate-200">
 				<a
 					href={links.home.href}
-					class="rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					class={`${linkMobileBase} transition hover:bg-slate-900 hover:text-white ${isHome ? linkActive : ''}`}
+					aria-current={isHome ? 'page' : undefined}
 				>
 					{links.home.label}
 				</a>
@@ -140,27 +163,35 @@ const links = {
 
 					<div id="solutions-menu-mobile" role="menu" aria-label="Solutions" class="px-2 pb-2">
 						{links.solutions.items.map((item) => (
+							(() => {
+								const active = pathname.startsWith(item.href);
+								return (
 							<a
 								role="menuitem"
 								href={item.href}
-								class="mt-1 block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+								class={`mt-1 block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 ${active ? 'bg-slate-900 text-white font-semibold' : ''}`}
+								aria-current={active ? 'page' : undefined}
 							>
 								{item.label}
 							</a>
+								);
+							})()
 						))}
 					</div>
 				</details>
 
 				<a
 					href={links.roles.href}
-					class="rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					class={`${linkMobileBase} transition hover:bg-slate-900 hover:text-white ${isRoles ? linkActive : ''}`}
+					aria-current={isRoles ? 'page' : undefined}
 				>
 					{links.roles.label}
 				</a>
 
 				<a
 					href={links.howItWorks.href}
-					class="rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					class={`${linkMobileBase} transition hover:bg-slate-900 hover:text-white ${isHowItWorks ? linkActive : ''}`}
+					aria-current={isHowItWorks ? 'page' : undefined}
 				>
 					{links.howItWorks.label}
 				</a>
