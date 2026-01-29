@@ -6,6 +6,12 @@ export type Props = {
 	redirectTo?: string;
 	/** Optional subject for notifications */
 	subject?: string;
+	/** Optional role context to include with the submission */
+	role?: string;
+	/** Optional default selection for Interest dropdown */
+	defaultInterest?: string;
+	/** Optional default message text */
+	defaultMessage?: string;
 };
 
 const action =
@@ -15,6 +21,9 @@ const action =
 
 const redirectTo = Astro.props.redirectTo ?? '';
 const subject = Astro.props.subject ?? 'TalentCompany — new inquiry';
+const role = Astro.props.role ?? '';
+const defaultInterest = Astro.props.defaultInterest ?? '';
+const defaultMessage = Astro.props.defaultMessage ?? '';
 ---
 
 <form
@@ -65,12 +74,12 @@ const subject = Astro.props.subject ?? 'TalentCompany — new inquiry';
 				name="interest"
 				required
 			>
-				<option value="design">Design</option>
-				<option value="aec">AEC</option>
-				<option value="marketing">Marketing</option>
-				<option value="managed-teams">Managed Teams</option>
-				<option value="staff-augmentation">Staff Augmentation</option>
-				<option value="other">Other</option>
+				<option value="design" selected={defaultInterest === 'design'}>Design</option>
+				<option value="aec" selected={defaultInterest === 'aec'}>AEC</option>
+				<option value="marketing" selected={defaultInterest === 'marketing'}>Marketing</option>
+				<option value="managed-teams" selected={defaultInterest === 'managed-teams'}>Managed Teams</option>
+				<option value="staff-augmentation" selected={defaultInterest === 'staff-augmentation'}>Staff Augmentation</option>
+				<option value="other" selected={defaultInterest === 'other'}>Other</option>
 			</select>
 		</div>
 
@@ -81,7 +90,7 @@ const subject = Astro.props.subject ?? 'TalentCompany — new inquiry';
 				id="message"
 				name="message"
 				required
-			></textarea>
+			>{defaultMessage}</textarea>
 		</div>
 	</div>
 
@@ -93,6 +102,7 @@ const subject = Astro.props.subject ?? 'TalentCompany — new inquiry';
 
 	<input type="hidden" name="_subject" value={subject} />
 	{redirectTo ? <input type="hidden" name="_redirect" value={redirectTo} /> : null}
+	{role ? <input type="hidden" name="role" value={role} /> : null}
 
 	<div class="mt-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
 		<button

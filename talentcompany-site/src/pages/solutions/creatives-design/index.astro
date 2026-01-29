@@ -1,21 +1,39 @@
 ---
-const to = '/services/design/';
+// AUTO-SCAFFOLD — to be filled with copy.
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import Footer from '../../../components/Footer.astro';
+
+const meta = {
+	title: 'Creative & Design Talent | TalentCompany',
+	description: 'TODO: Add description.',
+};
+
+const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const canonical = new URL('/solutions/creatives-design/', baseUrl).toString();
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta http-equiv="refresh" content={`0; url=${to}`} />
-		<meta name="robots" content="noindex" />
-		<link rel="canonical" href={to} />
-		<title>Redirecting…</title>
-	</head>
-	<body>
-		<p>
-			Redirecting to <a href={to}>{to}</a>…
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+
+	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+		<h1 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Creative &amp; Design Talent</h1>
+		<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+			TODO: Page scaffold for Creative &amp; Design solution.
 		</p>
-		<script is:inline>{`window.location.replace(${JSON.stringify(to)});`}</script>
-	</body>
-</html>
+
+		<div class="mt-8 grid gap-4 md:grid-cols-2">
+			<a href="/solutions/creatives-design/dedicated/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
+				<p class="text-sm font-semibold text-slate-100">Dedicated</p>
+				<p class="mt-2 text-sm text-slate-300">TODO: Add copy.</p>
+			</a>
+			<a href="/solutions/creatives-design/pm-led/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
+				<p class="text-sm font-semibold text-slate-100">PM-led</p>
+				<p class="mt-2 text-sm text-slate-300">TODO: Add copy.</p>
+			</a>
+		</div>
+	</main>
+
+	<Footer />
+</Layout>
 

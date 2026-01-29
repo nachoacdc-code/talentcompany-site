@@ -1,0 +1,28 @@
+---
+// AUTO-SCAFFOLD — to be filled with copy.
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import Footer from '../../../components/Footer.astro';
+
+const meta = {
+	title: 'AEC Talent — Teams | TalentCompany',
+	description: 'TODO: Add description.',
+};
+
+const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const canonical = new URL('/solutions/aec-talent/teams/', baseUrl).toString();
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+
+	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+		<h1 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">AEC Talent — Team Integration</h1>
+		<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+			TODO: Scaffold page for team integration / pods.
+		</p>
+	</main>
+
+	<Footer />
+</Layout>
+

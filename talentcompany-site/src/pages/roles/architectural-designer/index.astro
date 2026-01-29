@@ -1,0 +1,248 @@
+---
+// AUTO-SCAFFOLD — to be filled with copy.
+import Layout from '../../../layouts/Layout.astro';
+import MetaHead from '../../../components/MetaHead.astro';
+import ContactSection from '../../../components/ContactSection.astro';
+import ContactForm from '../../../components/ContactForm.astro';
+import Footer from '../../../components/Footer.astro';
+
+const brand = 'TalentCompany';
+
+const meta = {
+	title: `Remote Architectural Designers for US Firms | ${brand}`,
+	description:
+		'Hire vetted remote architectural designers — full-time, part-time, or team integration. Revit, schematic design, construction docs.',
+};
+
+const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
+const canonical = new URL('/roles/architectural-designer/', baseUrl).toString();
+
+const roleName = 'Architectural Designer';
+const prefilledMessage = `Role: ${roleName}\n\nTell us:\n- Firm type + project types\n- Tools + file formats\n- Timeline + capacity needed\n- Any standards (AIA, IBC, templates)\n`;
+---
+
+<Layout>
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+
+	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
+		{/* HERO SECTION */}
+		<section class="relative overflow-hidden">
+			<div class="grid items-center gap-10 lg:grid-cols-2">
+				<div>
+					<p class="text-sm font-semibold tracking-wide text-sky-300">Roles</p>
+					<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+						Dedicated Remote Architectural Designer Specialists
+					</h1>
+					<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
+						Vetted experts in conceptual design, schematic development, Revit modeling, and construction documents —
+						ready to integrate into your US firm’s workflow.
+					</p>
+
+					<div class="mt-8 flex flex-wrap gap-3">
+						<a
+							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/#contact"
+						>
+							Book a 15-Min Call
+						</a>
+						<a
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="#tell-us"
+						>
+							Tell Us Your Needs
+						</a>
+					</div>
+				</div>
+
+				<div class="relative">
+					<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 shadow-sm">
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Visual placeholder</p>
+						<div class="mt-4 aspect-[16/10] w-full rounded-xl border border-slate-800 bg-slate-900/40">
+							<p class="p-4 text-sm text-slate-300">TODO: Add architecture-focused visual (renders / Revit workspace).</p>
+						</div>
+					</div>
+					<div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
+					<div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
+				</div>
+			</div>
+		</section>
+
+		{/* ROLE OVERVIEW SECTION */}
+		<section class="mt-12 rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+			<h2 class="text-xl font-semibold text-white">Role overview</h2>
+			<p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
+				Our architectural designers bring firm-level expertise at 50%+ lower cost. Timezone-aligned, fluent English,
+				and pre-vetted for tools like Revit, AutoCAD, SketchUp, and Lumion.
+			</p>
+			<ul class="mt-5 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Schematic and design development</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">3D modeling and rendering</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Construction documentation</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Code compliance support</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Coordination with engineers and consultants</li>
+			</ul>
+		</section>
+
+		{/* WHY REMOTE ARCHITECTURAL DESIGNERS EXCEL */}
+		<section class="mt-12">
+			<h2 class="text-xl font-semibold text-white">Why remote architectural designers excel</h2>
+			<ul class="mt-4 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Handle peak workloads without delays</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Seamless redline integration and iteration</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Proven experience with US firm standards (AIA, IBC)</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-900/40 px-4 py-3">Fast turnaround on deliverables</li>
+			</ul>
+		</section>
+
+		{/* FLEXIBLE OPTIONS FOR THIS ROLE */}
+		<section class="mt-12" aria-labelledby="flexible-options">
+			<h2 id="flexible-options" class="text-xl font-semibold text-white">
+				Flexible options for this role
+			</h2>
+			<div class="mt-6 grid gap-4 md:grid-cols-2">
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Individual Specialist</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Dedicated full-time (40h/week) or part-time (20h/week) architectural designer embedded in your team.
+					</p>
+					<a
+						href="/solutions/aec-talent/individuals/"
+						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						View individuals <span aria-hidden="true">→</span>
+					</a>
+				</article>
+
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Team Integration</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Add architectural designers to a custom production pod with drafters, engineers, and optional PM
+						coordination.
+					</p>
+					<a
+						href="/solutions/aec-talent/teams/"
+						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						View teams <span aria-hidden="true">→</span>
+					</a>
+				</article>
+			</div>
+		</section>
+
+		{/* SAMPLE OUTPUTS / PROOF */}
+		<section class="mt-12" aria-labelledby="sample-outputs">
+			<h2 id="sample-outputs" class="text-xl font-semibold text-white">
+				Sample outputs / proof
+			</h2>
+			<div class="mt-6 grid gap-4 md:grid-cols-3">
+				<div class="aspect-[4/3] rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
+					<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Gallery</p>
+					<p class="mt-2 text-sm text-slate-300">TODO: Schematics placeholder</p>
+				</div>
+				<div class="aspect-[4/3] rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
+					<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Gallery</p>
+					<p class="mt-2 text-sm text-slate-300">TODO: Renders placeholder</p>
+				</div>
+				<div class="aspect-[4/3] rounded-2xl border border-slate-800 bg-slate-900/40 p-4">
+					<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Gallery</p>
+					<p class="mt-2 text-sm text-slate-300">TODO: Construction documents placeholder</p>
+				</div>
+			</div>
+			<figure class="mt-8 rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+				<blockquote class="text-sm leading-relaxed text-slate-200">
+					“Added two architectural designers — cut concept phase time by 40%.”
+				</blockquote>
+				<figcaption class="mt-3 text-xs text-slate-400">— Anonymized client</figcaption>
+			</figure>
+		</section>
+
+		{/* FAQ SECTION */}
+		<section class="mt-12" aria-labelledby="faq-architectural-designer">
+			<h2 id="faq-architectural-designer" class="text-xl font-semibold text-white">
+				FAQ
+			</h2>
+			<div class="mt-4 grid gap-3">
+				<details class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+					<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100">
+						How do designers adapt to firm-specific standards?
+					</summary>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">TODO: Add answer.</p>
+				</details>
+				<details class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+					<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100">
+						How are revisions handled?
+					</summary>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">TODO: Add answer.</p>
+				</details>
+				<details class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+					<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100">
+						What tools and file formats are supported?
+					</summary>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">TODO: Add answer.</p>
+				</details>
+			</div>
+		</section>
+
+		{/* FINAL CTA MODULE */}
+		<section class="mt-14 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
+			<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+				<div>
+					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to Add Architectural Design Capacity?</h2>
+					<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+						Book a call to discuss your specific needs — or tell us more to get started.
+					</p>
+				</div>
+				<div class="flex flex-wrap gap-3">
+					<a
+						href="/#contact"
+						class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Book a 15-Min Call
+					</a>
+					<a
+						href="#tell-us"
+						class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Tell Us Your Needs
+					</a>
+				</div>
+			</div>
+		</section>
+
+		{/* Secondary CTA: Full form (pre-filled role = Architectural Designer) */}
+		<section id="tell-us" class="mt-12">
+			<h2 class="text-xl font-semibold text-white">Tell us your needs</h2>
+			<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+				Share a few details and we’ll follow up with the best-fit candidates and engagement model.
+			</p>
+			<div class="mt-6 grid gap-6 lg:grid-cols-2">
+				<ContactForm
+					subject={`${brand} — new inquiry (role: ${roleName})`}
+					role={roleName}
+					defaultInterest="aec"
+					defaultMessage={prefilledMessage}
+				/>
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-sm font-semibold text-slate-100">Prefer to book time?</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						Use the scheduler on the homepage, or include your availability in the form.
+					</p>
+					<a
+						href="/#contact"
+						class="mt-5 inline-flex items-center justify-center rounded bg-sky-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Book a 15-Min Call
+					</a>
+				</div>
+			</div>
+		</section>
+	</main>
+
+	{/* Keep consistent global contact section available (optional) */}
+	<div class="mx-auto max-w-6xl px-6">
+		<ContactSection subject={`${brand} — new inquiry (role: ${roleName})`} />
+	</div>
+
+	<Footer />
+</Layout>
+
