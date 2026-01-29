@@ -21,10 +21,47 @@ const outcomes = [
 	{ title: 'Flexible engagement', body: 'Month-to-month, scale up or down.' },
 	{ title: 'Clear workflow', body: 'Simple intake, delivery, and iteration.' },
 ];
+
+const faqs = [
+	{
+		q: 'Should we choose a dedicated seat or PM-led delivery?',
+		a: 'Choose a dedicated seat when you want an embedded designer working directly with your team. Choose PM-led delivery when you want a managed workflow with predictable turnaround and less coordination overhead.',
+	},
+	{
+		q: 'How fast can we start?',
+		a: 'We can typically present vetted options quickly. Once scope and access are confirmed, onboarding is designed to be fast so you can start shipping.',
+	},
+	{
+		q: 'How do revisions and feedback work?',
+		a: 'We align on your brand standards and feedback cadence, then run structured iterations and handoffs to keep work moving.',
+	},
+];
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Remote Creative & Design Talent',
+	description: meta.description,
+	provider: {
+		'@type': 'Organization',
+		name: brand,
+		url: baseUrl,
+	},
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
 
 	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
 		{/* HERO */}
@@ -154,6 +191,19 @@ const outcomes = [
 						<blockquote class="text-sm leading-relaxed text-slate-200">“TODO testimonial {i}.”</blockquote>
 						<figcaption class="mt-3 text-xs text-slate-400">— TODO, anonymized</figcaption>
 					</figure>
+				))}
+			</div>
+		</section>
+
+		{/* FAQ */}
+		<section class="mt-12" aria-labelledby="faq-creative">
+			<h2 id="faq-creative" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">FAQ</h2>
+			<div class="mt-6 grid gap-3">
+				{faqs.map((item) => (
+					<details class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+						<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100">{item.q}</summary>
+						<p class="mt-3 text-sm leading-relaxed text-slate-300">{item.a}</p>
+					</details>
 				))}
 			</div>
 		</section>

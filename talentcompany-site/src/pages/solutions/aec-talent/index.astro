@@ -48,10 +48,34 @@ const faqs = [
 		a: 'Engagements are month-to-month, and we offer a free replacement guarantee to keep delivery moving.',
 	},
 ];
+
+const faqStructured = faqs.slice(0, 4);
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Remote AEC Talent (Revit, BIM, Drafting)',
+	description: meta.description,
+	provider: {
+		'@type': 'Organization',
+		name: brand,
+		url: baseUrl,
+	},
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqStructured.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
 
 	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
 		{/* HERO */}

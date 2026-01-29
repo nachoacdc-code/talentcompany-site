@@ -15,6 +15,44 @@ const meta = {
 const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
 const canonical = new URL('/how-it-works/', baseUrl).toString();
 
+const faqs = [
+	{
+		q: 'How quickly do we receive options?',
+		a: 'We can typically present vetted options in about 48 hours once we understand your needs.',
+	},
+	{
+		q: 'Do we have to interview candidates?',
+		a: 'No — interviews are optional. You can start faster or meet top matches for added confidence.',
+	},
+	{
+		q: 'What’s the difference between Individuals, Teams, and PM-led?',
+		a: 'Individuals are embedded specialists. Teams are pods for scaled throughput. PM-led includes a managed workflow with predictable turnaround and structured revisions.',
+	},
+];
+
+const webPageJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'WebPage',
+	name: meta.title,
+	description: meta.description,
+	url: canonical,
+	isPartOf: {
+		'@type': 'WebSite',
+		name: brand,
+		url: baseUrl,
+	},
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqs.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
+
 const steps = [
 	{
 		title: 'Tell us your needs',
@@ -65,7 +103,7 @@ const steps = [
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[webPageJsonLd, faqJsonLd]} />
 
 	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
 		{/* HERO */}
@@ -207,6 +245,19 @@ const steps = [
 						<blockquote class="text-sm leading-relaxed text-slate-200">“TODO testimonial {i}.”</blockquote>
 						<figcaption class="mt-3 text-xs text-slate-400">— TODO, anonymized</figcaption>
 					</figure>
+				))}
+			</div>
+		</section>
+
+		{/* FAQ */}
+		<section class="mt-12" aria-labelledby="faq-how">
+			<h2 id="faq-how" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">FAQ</h2>
+			<div class="mt-6 grid gap-3">
+				{faqs.map((item) => (
+					<details class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+						<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100">{item.q}</summary>
+						<p class="mt-3 text-sm leading-relaxed text-slate-300">{item.a}</p>
+					</details>
 				))}
 			</div>
 		</section>

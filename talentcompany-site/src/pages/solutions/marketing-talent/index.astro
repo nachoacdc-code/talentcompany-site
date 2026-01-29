@@ -25,10 +25,53 @@ const roles = [
 	'Conversion (CRO) Support',
 	'Marketing Ops Support',
 ];
+
+const faqs = [
+	{
+		q: 'Should we start with an individual or a pod?',
+		a: 'Start with an individual when you need a channel owner (SEO, PPC, lifecycle). Choose a pod when you need multi-channel execution with clear reporting and iteration.',
+	},
+	{
+		q: 'Do you support FT/PT and hourly blocks?',
+		a: 'Yes — you can hire full-time or part-time specialists, or use hourly blocks for audits, setups, and focused sprints.',
+	},
+	{
+		q: 'How fast can we receive candidates?',
+		a: 'We can typically present vetted options quickly. Once goals and access are confirmed, onboarding is designed to be fast.',
+	},
+	{
+		q: 'What if the fit is not right?',
+		a: 'Engagements are month-to-month, and we offer a free replacement guarantee.',
+	},
+];
+
+const faqStructured = faqs.slice(0, 4);
+
+const serviceJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'Service',
+	name: 'Remote Marketing Talent for US Teams',
+	description: meta.description,
+	provider: {
+		'@type': 'Organization',
+		name: brand,
+		url: baseUrl,
+	},
+};
+
+const faqJsonLd = {
+	'@context': 'https://schema.org',
+	'@type': 'FAQPage',
+	mainEntity: faqStructured.map((f) => ({
+		'@type': 'Question',
+		name: f.q,
+		acceptedAnswer: { '@type': 'Answer', text: f.a },
+	})),
+};
 ---
 
 <Layout>
-	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
+	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} jsonLd={[serviceJsonLd, faqJsonLd]} />
 
 	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
 		{/* HERO */}
@@ -161,6 +204,19 @@ const roles = [
 						<blockquote class="text-sm leading-relaxed text-slate-200">“TODO testimonial {i}.”</blockquote>
 						<figcaption class="mt-3 text-xs text-slate-400">— TODO, anonymized</figcaption>
 					</figure>
+				))}
+			</div>
+		</section>
+
+		{/* FAQ */}
+		<section class="mt-12" aria-labelledby="faq-marketing">
+			<h2 id="faq-marketing" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">FAQ</h2>
+			<div class="mt-6 grid gap-3">
+				{faqs.map((item) => (
+					<details class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+						<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100">{item.q}</summary>
+						<p class="mt-3 text-sm leading-relaxed text-slate-300">{item.a}</p>
+					</details>
 				))}
 			</div>
 		</section>
