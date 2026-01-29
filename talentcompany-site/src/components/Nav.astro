@@ -371,17 +371,25 @@ const links = {
     }
   });
 
+  // When clicking a dropdown summary, close any other open dropdowns.
+  // Use capture phase so this runs before the browser toggles <details>.
+  header.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    const summary = target.closest('summary');
+    if (!summary) return;
+    const details = summary.closest('details[data-nav-dropdown]');
+    if (!details) return;
+    header.querySelectorAll('details[data-nav-dropdown][open]').forEach((other) => {
+      if (other !== details) other.removeAttribute('open');
+    });
+  }, true);
+
   // Keep aria-expanded in sync for dropdown summaries.
   header.querySelectorAll('details[data-nav-dropdown]').forEach((details) => {
     const summary = details.querySelector('summary');
     const sync = () => summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
     sync();
-    // Close other dropdowns immediately when a summary is clicked/opened.
-    summary?.addEventListener('click', () => {
-      header.querySelectorAll('details[data-nav-dropdown][open]').forEach((other) => {
-        if (other !== details) other.removeAttribute('open');
-      });
-    });
     details.addEventListener('toggle', () => {
       // Ensure only one dropdown is open at a time.
       if (details.hasAttribute('open')) {
