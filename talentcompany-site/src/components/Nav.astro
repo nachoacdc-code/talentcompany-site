@@ -1,0 +1,230 @@
+---
+const links = {
+	home: { label: 'Home', href: '/' },
+	solutions: {
+		label: 'Solutions',
+		items: [
+			{ label: 'AEC Talent', href: '/solutions/aec-talent/' },
+			{ label: 'Creative & Design Talent', href: '/solutions/creatives-design/' },
+			{ label: 'Marketing Talent', href: '/solutions/marketing-talent/' },
+		],
+	},
+	roles: { label: 'Roles', href: '/roles/' },
+	howItWorks: { label: 'How It Works', href: '/#how-it-works' },
+	cta: { label: 'Book a Call', href: '/#contact' },
+};
+---
+
+<header class="sticky top-0 z-50 border-b border-slate-800 bg-slate-950/80 backdrop-blur">
+	<div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+		<a
+			href="/"
+			class="text-sm font-semibold tracking-tight text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+		>
+			TalentCompany
+		</a>
+
+		<nav class="hidden items-center gap-6 text-sm text-slate-200 md:flex" aria-label="Primary">
+			<a
+				href={links.home.href}
+				class="rounded-md px-1 py-2 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+			>
+				{links.home.label}
+			</a>
+
+			<details class="group relative" data-nav-dropdown="solutions">
+				<summary
+					class="flex cursor-pointer list-none items-center gap-2 rounded-md px-1 py-2 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					aria-haspopup="menu"
+					aria-expanded="false"
+					aria-controls="solutions-menu"
+				>
+					<span>{links.solutions.label}</span>
+					<svg
+						class="h-4 w-4 text-slate-300 transition group-open:rotate-180"
+						viewBox="0 0 20 20"
+						fill="currentColor"
+						aria-hidden="true"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				</summary>
+
+				<div
+					id="solutions-menu"
+					role="menu"
+					aria-label="Solutions"
+					class="absolute left-0 mt-2 w-72 rounded-2xl border border-slate-800 bg-slate-950/95 p-2 shadow-xl shadow-black/30"
+				>
+					{links.solutions.items.map((item) => (
+						<a
+							role="menuitem"
+							href={item.href}
+							class="block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						>
+							{item.label}
+						</a>
+					))}
+				</div>
+			</details>
+
+			<a
+				href={links.roles.href}
+				class="rounded-md px-1 py-2 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+			>
+				{links.roles.label}
+			</a>
+
+			<a
+				href={links.howItWorks.href}
+				class="rounded-md px-1 py-2 transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+			>
+				{links.howItWorks.label}
+			</a>
+
+			<a
+				href={links.cta.href}
+				class="ml-1 inline-flex items-center justify-center rounded bg-sky-600 px-4 py-2 font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+			>
+				{links.cta.label}
+			</a>
+		</nav>
+
+		<button
+			type="button"
+			class="inline-flex items-center justify-center rounded-lg border border-slate-800 bg-slate-900/50 px-3 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 md:hidden"
+			aria-label="Open menu"
+			aria-expanded="false"
+			aria-controls="mobile-menu"
+			data-nav-mobile-toggle
+		>
+			Menu
+		</button>
+	</div>
+
+	<div id="mobile-menu" class="hidden border-t border-slate-800 bg-slate-950/95 md:hidden" data-nav-mobile-menu>
+		<nav class="mx-auto max-w-6xl px-6 py-4" aria-label="Mobile primary">
+			<div class="flex flex-col gap-2 text-sm text-slate-200">
+				<a
+					href={links.home.href}
+					class="rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+				>
+					{links.home.label}
+				</a>
+
+				<details class="group rounded-xl border border-slate-800 bg-slate-950/40" data-nav-dropdown="solutions-mobile">
+					<summary
+						class="flex cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+						aria-haspopup="menu"
+						aria-expanded="false"
+						aria-controls="solutions-menu-mobile"
+					>
+						<span>{links.solutions.label}</span>
+						<svg
+							class="h-4 w-4 text-slate-300 transition group-open:rotate-180"
+							viewBox="0 0 20 20"
+							fill="currentColor"
+							aria-hidden="true"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M5.23 7.21a.75.75 0 0 1 1.06.02L10 10.94l3.71-3.71a.75.75 0 1 1 1.06 1.06l-4.24 4.24a.75.75 0 0 1-1.06 0L5.21 8.29a.75.75 0 0 1 .02-1.08Z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</summary>
+
+					<div id="solutions-menu-mobile" role="menu" aria-label="Solutions" class="px-2 pb-2">
+						{links.solutions.items.map((item) => (
+							<a
+								role="menuitem"
+								href={item.href}
+								class="mt-1 block rounded-xl px-3 py-2 text-sm text-slate-200 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+							>
+								{item.label}
+							</a>
+						))}
+					</div>
+				</details>
+
+				<a
+					href={links.roles.href}
+					class="rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+				>
+					{links.roles.label}
+				</a>
+
+				<a
+					href={links.howItWorks.href}
+					class="rounded-xl px-3 py-3 transition hover:bg-slate-900 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+				>
+					{links.howItWorks.label}
+				</a>
+
+				<a
+					href={links.cta.href}
+					class="mt-2 inline-flex w-full items-center justify-center rounded bg-sky-600 px-4 py-3 font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+				>
+					{links.cta.label}
+				</a>
+			</div>
+		</nav>
+	</div>
+
+	<script is:inline>
+		{`(() => {
+  const header = document.currentScript?.closest('header');
+  if (!header) return;
+
+  const mobileToggle = header.querySelector('[data-nav-mobile-toggle]');
+  const mobileMenu = header.querySelector('[data-nav-mobile-menu]');
+
+  function setMobile(open) {
+    if (!mobileToggle || !mobileMenu) return;
+    mobileMenu.classList.toggle('hidden', !open);
+    mobileToggle.setAttribute('aria-expanded', String(open));
+    mobileToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  mobileToggle?.addEventListener('click', () => {
+    const open = mobileToggle.getAttribute('aria-expanded') !== 'true';
+    setMobile(open);
+    if (open) {
+      const first = mobileMenu?.querySelector('a, summary, button, [tabindex]:not([tabindex="-1"])');
+      first?.focus?.();
+    }
+  });
+
+  // Close mobile on Escape or outside click.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    if (mobileToggle?.getAttribute('aria-expanded') === 'true') {
+      setMobile(false);
+      mobileToggle?.focus?.();
+    }
+    // Close any open dropdowns.
+    header.querySelectorAll('details[open]').forEach((d) => d.removeAttribute('open'));
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!header.contains(e.target)) {
+      setMobile(false);
+      header.querySelectorAll('details[open]').forEach((d) => d.removeAttribute('open'));
+    }
+  });
+
+  // Keep aria-expanded in sync for dropdown summaries.
+  header.querySelectorAll('details[data-nav-dropdown]').forEach((details) => {
+    const summary = details.querySelector('summary');
+    const sync = () => summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
+    sync();
+    details.addEventListener('toggle', sync);
+  });
+})();`}
+	</script>
+</header>
+

@@ -1,5 +1,6 @@
 ---
 import '../styles/globals.css';
+import Nav from '../components/Nav.astro';
 ---
 
 <!doctype html>
@@ -11,6 +12,7 @@ import '../styles/globals.css';
 		<slot name="head" />
 	</head>
 	<body class="min-h-screen bg-slate-950 text-slate-100 antialiased">
+		<Nav />
 		<slot />
 	</body>
 </html>
