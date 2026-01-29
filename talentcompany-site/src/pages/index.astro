@@ -1,16 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import MetaHead from '../components/MetaHead.astro';
-import HeroA from '../components/HeroA.astro';
-import HeroB from '../components/HeroB.astro';
 import ContactForm from '../components/ContactForm.astro';
 import CalendlyEmbed from '../components/CalendlyEmbed.astro';
 import Footer from '../components/Footer.astro';
 
 const meta = {
-	title: 'Remote Design & AEC Talent | Flexible Teams & Staff Augmentation',
+	title: 'Vetted Remote Talent from Latin America for US Teams | TalentCompany',
 	description:
-		'Hire pre-vetted remote designers and AEC professionals through flexible full-time, part-time, or managed team engagements. Scale your capacity without hiring risk.',
+		'Scale your US team with vetted remote talent across AEC, marketing, and creative & design. Full-time, part-time, hourly packages, or custom teams — presented in 48 hours.',
 };
 
 const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
@@ -35,198 +33,306 @@ const orgJsonLd = {
 		jsonLd={orgJsonLd}
 	/>
 
-	{/* Hero A/B (client-side selection; see README) */}
-	<div id="hero-variant-a" data-hero-variant="A">
-		<HeroA />
-	</div>
-	<div id="hero-variant-b" data-hero-variant="B" class="hidden">
-		<HeroB />
-	</div>
-	<script is:inline>
-		{`(() => {
-  const param = new URLSearchParams(window.location.search).get('hero');
-  const stored = window.localStorage.getItem('tc_hero_variant');
-  const variant = (param === 'A' || param === 'B')
-    ? param
-    : (stored === 'A' || stored === 'B')
-      ? stored
-      : (Math.random() < 0.5 ? 'A' : 'B');
-
-  window.localStorage.setItem('tc_hero_variant', variant);
-
-  const a = document.getElementById('hero-variant-a');
-  const b = document.getElementById('hero-variant-b');
-  if (a && b) {
-    a.classList.toggle('hidden', variant !== 'A');
-    b.classList.toggle('hidden', variant !== 'B');
-  }
-
-  // Optional analytics hook (works if you later add GA/Segment/etc.)
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push({ event: 'hero_variant', hero_variant: variant });
-
-  const active = variant === 'A' ? a : b;
-  const primaryLink = active?.querySelector('a[href*=\"#contact\"], a[href^=\"mailto:\"]');
-  primaryLink?.addEventListener('click', () => {
-    window.dataLayer.push({ event: 'hero_primary_click', hero_variant: variant });
-  });
-})();`}
-	</script>
-
 	<main class="mx-auto max-w-6xl px-6">
-		<section class="py-12 sm:py-14">
-			<div class="rounded-2xl border border-slate-800 bg-slate-900/40 px-6 py-6 sm:px-8">
-				<p class="text-center text-sm font-medium text-slate-300">
-					Senior-level contractors â€¢ US time zone overlap â€¢ Flexible engagements
-				</p>
-			</div>
-		</section>
+		{/* HERO */}
+		<section class="relative overflow-hidden py-14 sm:py-20">
+			<div class="grid items-center gap-10 lg:grid-cols-2">
+				<div>
+					<h1 class="text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+						Scale Your US Team with Top Vetted Remote Talent from Latin America
+					</h1>
+					<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
+						Dedicated specialists in AEC, marketing, and creative &amp; design. Full-time, part-time, hourly packages,
+						or custom teams — presented in 48 hours, optional interviews, month-to-month flexibility.
+					</p>
 
-		<section class="pb-10 sm:pb-14">
-			<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Why TalentCompany</h2>
-			<ul class="mt-6 grid gap-4 md:grid-cols-3">
-				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<p class="text-base font-semibold text-slate-100">Pre-vetted, production-ready</p>
-					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Experienced specialists who can plug into your tools and process quickly.
-					</p>
-				</li>
-				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<p class="text-base font-semibold text-slate-100">Flexible capacity</p>
-					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Full-time, part-time, or managed teamsâ€”scale up or down without hiring risk.
-					</p>
-				</li>
-				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<p class="text-base font-semibold text-slate-100">Fast matching</p>
-					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Get the right skill set for the right engagement typeâ€”without weeks of sourcing.
-					</p>
-				</li>
-			</ul>
-		</section>
-
-		<section id="services" class="py-10 sm:py-14">
-			<div class="flex flex-col gap-2">
-				<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">What we do</h2>
-				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-					Choose staff augmentation for dedicated talent, or managed teams for end-to-end delivery.
-				</p>
-			</div>
-
-			<div class="mt-8 grid gap-4 lg:grid-cols-2">
-				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">Staff Augmentation</h3>
-					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						Dedicated talent, fully integrated into your team. Full-time or part-time professionals you manage
-						directly â€” fast onboarding, production-ready.
-					</p>
-					<div class="mt-6 flex flex-wrap gap-3">
+					<div class="mt-8 flex flex-wrap gap-3">
 						<a
-							class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="/services/design/"
+							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/#contact"
 						>
-							Design
+							Book a 15-Min Call
 						</a>
 						<a
-							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="/services/aec/"
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							href="/#contact"
+							data-open-contact-modal
 						>
-							AEC
+							Tell Us Your Needs
 						</a>
+						{/* TODO: Replace with form modal open behavior. */}
 					</div>
+
+					<p class="mt-4 text-xs leading-relaxed text-slate-400">
+						50%+ cost savings. Timezone-aligned. Free replacement guarantee.
+					</p>
+				</div>
+
+				<div class="relative">
+					<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 shadow-sm">
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Visual placeholder</p>
+						{/* TODO: Replace with /public/hero-split.jpg (split image). */}
+						<div class="mt-4 aspect-[16/10] w-full overflow-hidden rounded-xl border border-slate-800 bg-slate-900/40">
+							<div class="grid h-full grid-cols-2">
+								<div class="flex items-center justify-center border-r border-slate-800">
+									<p class="px-4 text-center text-sm text-slate-300">Left image</p>
+								</div>
+								<div class="flex items-center justify-center">
+									<p class="px-4 text-center text-sm text-slate-300">Right image</p>
+								</div>
+							</div>
+						</div>
+
+						<div class="mt-6 grid gap-3 sm:grid-cols-2">
+							<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Speed</p>
+								<p class="mt-2 text-sm text-slate-200">Shortlist in 48 hours.</p>
+							</div>
+							<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Alignment</p>
+								<p class="mt-2 text-sm text-slate-200">US time zones + fluent English.</p>
+							</div>
+							<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Flexibility</p>
+								<p class="mt-2 text-sm text-slate-200">Month-to-month, scale anytime.</p>
+							</div>
+							<div class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Guarantee</p>
+								<p class="mt-2 text-sm text-slate-200">Free replacement guarantee.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
+					<div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
+				</div>
+			</div>
+		</section>
+
+		{/* CHOOSE YOUR SOLUTION */}
+		<section class="py-12 sm:py-14" aria-labelledby="choose-solution">
+			<div class="flex flex-col gap-2">
+				<h2 id="choose-solution" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Choose your solution</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					Pick a lane — we’ll match specialists who plug into your workflow quickly.
+				</p>
+			</div>
+
+			<div class="mt-8 grid gap-4 lg:grid-cols-3">
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">AEC</p>
+					<h3 class="mt-2 text-lg font-semibold text-white">AEC Talent</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Revit modelers, BIM coordination, drafting support, and production-ready specialists aligned to US firm standards.
+					</p>
+					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Concept + schematic support</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Construction documents</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Revit/BIM workflows</li>
+					</ul>
+					<a
+						href="/solutions/aec-talent/"
+						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Explore AEC <span aria-hidden="true">→</span>
+					</a>
 				</article>
 
 				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<h3 class="text-base font-semibold text-slate-100">Managed Teams</h3>
+					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Creative</p>
+					<h3 class="mt-2 text-lg font-semibold text-white">Creative &amp; Design Talent</h3>
 					<p class="mt-3 text-sm leading-relaxed text-slate-300">
-						PM-led teams delivered as predictable monthly capacity. A streamlined process, clear ownership, and
-						studio-grade output.
+						Brand, marketing, and product design capacity — dedicated designers or PM-led delivery for predictable output.
 					</p>
-					<div class="mt-6 flex flex-wrap gap-3">
-						<a
-							class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="/services/marketing/"
-						>
-							Marketing
-						</a>
-						<a
-							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="/services/design/"
-						>
-							Design delivery
-						</a>
-					</div>
+					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Brand + marketing design</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Decks + presentations</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Web + UI support</li>
+					</ul>
+					<a
+						href="/solutions/creatives-design/"
+						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Explore design <span aria-hidden="true">→</span>
+					</a>
+				</article>
+
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Marketing</p>
+					<h3 class="mt-2 text-lg font-semibold text-white">Marketing Talent</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						SEO, paid media, lifecycle, content, and analytics specialists who can own channels and ship improvements fast.
+					</p>
+					<ul class="mt-4 grid gap-2 text-sm text-slate-300">
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">SEO + content systems</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">PPC + paid social</li>
+						<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">GA4 + performance reporting</li>
+					</ul>
+					<a
+						href="/solutions/marketing-talent/"
+						class="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Explore marketing <span aria-hidden="true">→</span>
+					</a>
 				</article>
 			</div>
 		</section>
 
-		<section id="how-it-works" class="py-10 sm:py-14">
+		{/* HOW IT WORKS (5 steps) */}
+		<section id="how-it-works" class="py-12 sm:py-14" aria-labelledby="how-it-works-title">
 			<div class="flex flex-col gap-2">
-				<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">How it works</h2>
+				<h2 id="how-it-works-title" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">How it works</h2>
 				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-					A simple process designed to get you productive quickly.
+					A simple process designed for speed, quality, and low risk.
 				</p>
 			</div>
 
-			<ol class="mt-8 grid gap-4 lg:grid-cols-3">
-				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step 1</p>
-					<p class="mt-2 text-base font-semibold text-slate-100">Tell us your needs</p>
-					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Skills, availability, and engagement typeâ€”so we can match accurately.
-					</p>
-				</li>
-				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step 2</p>
-					<p class="mt-2 text-base font-semibold text-slate-100">Get matched fast</p>
-					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						We introduce vetted talent or a managed team aligned to your workflow.
-					</p>
-				</li>
-				<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
-					<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step 3</p>
-					<p class="mt-2 text-base font-semibold text-slate-100">Start working</p>
-					<p class="mt-2 text-sm leading-relaxed text-slate-300">
-						Collaborate immediately, then scale up or down as priorities change.
-					</p>
-				</li>
+			<ol class="mt-8 grid gap-4 lg:grid-cols-5">
+				{[
+					{
+						title: 'Tell us your needs',
+						body: 'Roles, tools, availability, and outcomes — so we match accurately.',
+					},
+					{
+						title: 'Get candidates in 48 hours',
+						body: 'We deliver a short list of vetted specialists aligned to your workflow.',
+					},
+					{
+						title: 'Interview (optional)',
+						body: 'Meet top matches, or skip interviews if you want to start faster.',
+					},
+					{
+						title: 'Start month-to-month',
+						body: 'Onboard quickly and keep engagements flexible as priorities change.',
+					},
+					{
+						title: 'Scale + replace as needed',
+						body: 'Add capacity for peak loads — and get a free replacement guarantee.',
+					},
+				].map((step, idx) => (
+					<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+						<div class="flex items-center gap-3">
+							<div class="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-800 bg-slate-950/40">
+								{/* Icon placeholder */}
+								<span class="text-sm font-semibold text-sky-300">{idx + 1}</span>
+							</div>
+							<p class="text-sm font-semibold text-slate-100">{step.title}</p>
+						</div>
+						<p class="mt-3 text-sm leading-relaxed text-slate-300">{step.body}</p>
+					</li>
+				))}
 			</ol>
 		</section>
 
-		<section class="py-10 sm:py-14">
+		{/* FLEXIBLE OPTIONS */}
+		<section class="py-12 sm:py-14" aria-labelledby="flexible-options-title">
+			<div class="flex flex-col gap-2">
+				<h2 id="flexible-options-title" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Flexible options</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					Engagements designed to fit your budget, timelines, and workflow.
+				</p>
+			</div>
+
+			<div class="mt-8 grid gap-4 lg:grid-cols-3">
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Individual Specialists</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Dedicated full-time or part-time specialists embedded into your team and tools.
+					</p>
+				</article>
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Hourly Packages</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Blocks of hours for fast execution, overflow support, audits, or urgent deliverables.
+					</p>
+				</article>
+				<article class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<h3 class="text-base font-semibold text-slate-100">Team Scaling</h3>
+					<p class="mt-3 text-sm leading-relaxed text-slate-300">
+						Build a pod with complementary roles (and optional PM) to increase throughput end-to-end.
+					</p>
+				</article>
+			</div>
+		</section>
+
+		{/* PROOF */}
+		<section class="py-12 sm:py-14" aria-labelledby="proof-title">
+			<div class="flex flex-col gap-2">
+				<h2 id="proof-title" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Proof</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					{/* TODO: Replace with real testimonials carousel. */}
+					Testimonials carousel placeholder (to be filled).
+				</p>
+			</div>
+
+			<div class="mt-8 grid gap-4 md:grid-cols-3">
+				{[1, 2, 3].map((i) => (
+					<figure class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+						<blockquote class="text-sm leading-relaxed text-slate-200">“TODO testimonial {i}.”</blockquote>
+						<figcaption class="mt-3 text-xs text-slate-400">— TODO, anonymized</figcaption>
+					</figure>
+				))}
+			</div>
+		</section>
+
+		{/* POPULAR ROLES */}
+		<section class="py-12 sm:py-14" aria-labelledby="popular-roles-title">
+			<div class="flex flex-col gap-2">
+				<h2 id="popular-roles-title" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Popular roles</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					Browse role templates and common placements.
+				</p>
+			</div>
+
+			<div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+				<a href="/roles/architectural-designer/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
+					<p class="text-sm font-semibold text-slate-100">Architectural Designer</p>
+					<p class="mt-2 text-sm text-slate-300">AEC</p>
+				</a>
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-sm font-semibold text-slate-100">SEO Specialist</p>
+					<p class="mt-2 text-sm text-slate-300">Marketing (placeholder)</p>
+				</div>
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-sm font-semibold text-slate-100">Brand / Visual Designer</p>
+					<p class="mt-2 text-sm text-slate-300">Creative (placeholder)</p>
+				</div>
+				<a href="/roles/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
+					<p class="text-sm font-semibold text-slate-100">View all roles</p>
+					<p class="mt-2 text-sm text-slate-300">Go to roles directory</p>
+				</a>
+			</div>
+		</section>
+
+		{/* FINAL CTA */}
+		<section class="py-12 sm:py-14">
 			<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
 				<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
 					<div>
-						<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Explore services</h2>
+						<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to Add Reliable Capacity?</h2>
 						<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-							Start with a service page, then reach out to scope a team.
+							Book a call to discuss your needs — or tell us more to get started.
 						</p>
 					</div>
 					<div class="flex flex-wrap gap-3">
 						<a
-							class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="/services/design/"
+							href="/#contact"
+							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 						>
-							Design
+							Book a 15-Min Call
 						</a>
 						<a
-							class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-4 py-2 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="/services/aec/"
+							href="/#contact"
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
 						>
-							AEC
-						</a>
-						<a
-							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="/services/marketing/"
-						>
-							Marketing
+							Tell Us Your Needs
 						</a>
 					</div>
 				</div>
 			</div>
 		</section>
 
+		{/* CONTACT */}
 		<section id="contact" class="pb-16 pt-10 sm:pb-20 sm:pt-14">
 			<div class="flex flex-col gap-2">
 				<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Contact</h2>
