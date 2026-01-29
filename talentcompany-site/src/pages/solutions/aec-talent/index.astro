@@ -1,38 +1,284 @@
 ---
-// AUTO-SCAFFOLD — to be filled with copy.
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
+import ContactSection from '../../../components/ContactSection.astro';
 import Footer from '../../../components/Footer.astro';
 
+const brand = 'TalentCompany';
+
 const meta = {
-	title: 'AEC Talent | TalentCompany',
-	description: 'TODO: Add description.',
+	title: `Remote AEC Talent: Revit, BIM, Drafting | ${brand}`,
+	description:
+		'Dedicated remote specialists and teams for US AEC firms — individuals or scaling pods, vetted and ready fast.',
 };
 
 const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
 const canonical = new URL('/solutions/aec-talent/', baseUrl).toString();
+
+const disciplines = [
+	{ label: 'Architectural Designer', href: '/roles/architectural-designer/' },
+	{ label: 'Revit Modeler', href: '/roles/' },
+	{ label: 'BIM Coordinator', href: '/roles/' },
+	{ label: 'CAD / Drafting Specialist', href: '/roles/' },
+	{ label: 'Construction Documents Support', href: '/roles/' },
+	{ label: '3D Visualization / Rendering', href: '/roles/' },
+	{ label: 'Production Support Pod', href: '/roles/' },
+	{ label: 'Project Support (Overflow)', href: '/roles/' },
+];
+
+const faqs = [
+	{
+		q: 'How do remote AEC specialists adapt to our firm standards?',
+		a: 'We align on your BEP/templates, deliverable standards, and QA cadence during onboarding, then work inside your workflow (redlines, markups, checklists).',
+	},
+	{
+		q: 'How quickly can we start?',
+		a: 'We can typically present vetted options in 48 hours. Once access and scope are confirmed, onboarding is designed to be fast.',
+	},
+	{
+		q: 'What tools and file formats do you support?',
+		a: 'Common tools include Revit, AutoCAD, SketchUp, and rendering tools. We work in your preferred file formats and handoff standards.',
+	},
+	{
+		q: 'How are revisions handled?',
+		a: 'Revisions follow your redline process: iterative updates, clear versioning, and handoff checkpoints so changes stay aligned to your standards.',
+	},
+	{
+		q: 'What if the fit is not right?',
+		a: 'Engagements are month-to-month, and we offer a free replacement guarantee to keep delivery moving.',
+	},
+];
 ---
 
 <Layout>
 	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
 
 	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
-		<h1 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">AEC Talent</h1>
-		<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-			TODO: Page scaffold for AEC Talent solution.
-		</p>
+		{/* HERO */}
+		<section class="relative overflow-hidden">
+			<div class="grid items-center gap-10 lg:grid-cols-2">
+				<div>
+					<p class="text-sm font-semibold tracking-wide text-sky-300">Solutions</p>
+					<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+						Dedicated Remote AEC Talent for US Firms of All Sizes
+					</h1>
+					<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
+						Revit, BIM, drafting, and production support — vetted specialists who integrate into your standards and
+						deadlines. Start with an individual, or scale a pod to handle peak workloads.
+					</p>
 
-		<div class="mt-8 grid gap-4 md:grid-cols-2">
-			<a href="/solutions/aec-talent/individuals/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
-				<p class="text-sm font-semibold text-slate-100">Individuals</p>
-				<p class="mt-2 text-sm text-slate-300">TODO: Add copy.</p>
-			</a>
-			<a href="/solutions/aec-talent/teams/" class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900">
-				<p class="text-sm font-semibold text-slate-100">Teams</p>
-				<p class="mt-2 text-sm text-slate-300">TODO: Add copy.</p>
-			</a>
-		</div>
+					<div class="mt-8 flex flex-wrap gap-3">
+						<a
+							href="/#contact"
+							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						>
+							Book a 15-Min Call
+						</a>
+						<a
+							href="/solutions/aec-talent/individuals/"
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						>
+							View options
+						</a>
+					</div>
+
+					<p class="mt-4 text-xs leading-relaxed text-slate-400">
+						Timezone-aligned. Vetted specialists. Month-to-month flexibility. Free replacement guarantee.
+					</p>
+				</div>
+
+				<div class="relative">
+					<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 shadow-sm">
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">What you get</p>
+						<ul class="mt-4 grid gap-3 sm:grid-cols-2">
+							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Alignment</p>
+								<p class="mt-2 text-sm text-slate-200">US time zone overlap + fluent English.</p>
+							</li>
+							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Vetting</p>
+								<p class="mt-2 text-sm text-slate-200">Pre-vetted for production workflows.</p>
+							</li>
+							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Flexibility</p>
+								<p class="mt-2 text-sm text-slate-200">Month-to-month, scale up or down.</p>
+							</li>
+							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Guarantee</p>
+								<p class="mt-2 text-sm text-slate-200">Free replacement guarantee.</p>
+							</li>
+						</ul>
+					</div>
+					<div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
+					<div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
+				</div>
+			</div>
+		</section>
+
+		{/* OPTIONS OVERVIEW */}
+		<section class="mt-12" aria-labelledby="options-aec">
+			<h2 id="options-aec" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+				Choose your engagement
+			</h2>
+			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+				Start with a single specialist, or scale a team to hit deadlines without burning out your core staff.
+			</p>
+
+			<div class="mt-6 grid gap-4 md:grid-cols-2">
+				<a
+					href="/solutions/aec-talent/individuals/"
+					class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900"
+				>
+					<p class="text-sm font-semibold text-slate-100">Individual Specialist</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						Dedicated full-time (40h/week) or part-time (20h/week) AEC talent embedded into your team.
+					</p>
+					<p class="mt-4 text-sm font-semibold text-sky-300">Explore individuals →</p>
+				</a>
+
+				<a
+					href="/solutions/aec-talent/teams/"
+					class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6 transition hover:bg-slate-900"
+				>
+					<p class="text-sm font-semibold text-slate-100">Team Scaling</p>
+					<p class="mt-2 text-sm leading-relaxed text-slate-300">
+						Add capacity via a production pod with complementary roles for predictable throughput.
+					</p>
+					<p class="mt-4 text-sm font-semibold text-sky-300">Explore teams →</p>
+				</a>
+			</div>
+		</section>
+
+		{/* KEY BENEFITS */}
+		<section class="mt-12 rounded-2xl border border-slate-800 bg-slate-900/40 p-6" aria-labelledby="benefits-aec">
+			<h2 id="benefits-aec" class="text-xl font-semibold text-white">Key benefits</h2>
+			<ul class="mt-5 grid gap-2 text-sm text-slate-300 sm:grid-cols-2">
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Timezone-aligned with US teams</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Pre-vetted for production workflows</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Month-to-month flexibility</li>
+				<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Free replacement guarantee</li>
+			</ul>
+		</section>
+
+		{/* DISCIPLINES / ROLES */}
+		<section class="mt-12" aria-labelledby="disciplines-aec">
+			<div class="flex flex-col gap-2">
+				<h2 id="disciplines-aec" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+					Supported disciplines &amp; roles
+				</h2>
+				<p class="max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+					Explore roles and templates, then tell us what you need.
+				</p>
+			</div>
+
+			<div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+				{disciplines.map((d) => (
+					<a
+						href={d.href}
+						class="rounded-2xl border border-slate-800 bg-slate-900/40 px-5 py-4 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					>
+						<p class="text-sm font-semibold text-slate-100">{d.label}</p>
+						<p class="mt-1 text-xs text-slate-400">View role →</p>
+					</a>
+				))}
+			</div>
+
+			<div class="mt-6">
+				<a
+					href="/roles/"
+					class="inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				>
+					Browse all roles <span aria-hidden="true">→</span>
+				</a>
+			</div>
+		</section>
+
+		{/* PROOF + MID CTA */}
+		<section class="mt-12" aria-labelledby="proof-aec">
+			<h2 id="proof-aec" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Proof</h2>
+			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+				{/* TODO: Replace with real testimonials carousel. */}
+				Testimonials placeholder (to be filled).
+			</p>
+
+			<div class="mt-6 grid gap-4 md:grid-cols-3">
+				{[1, 2, 3].map((i) => (
+					<figure class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+						<blockquote class="text-sm leading-relaxed text-slate-200">“TODO testimonial {i}.”</blockquote>
+						<figcaption class="mt-3 text-xs text-slate-400">— TODO, anonymized</figcaption>
+					</figure>
+				))}
+			</div>
+
+			<div class="mt-10 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
+				<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+					<div>
+						<h3 class="text-xl font-semibold text-white">Want to see matched AEC candidates?</h3>
+						<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+							Share your roles, tools, and timeline — we’ll propose the best-fit engagement model.
+						</p>
+					</div>
+					<div class="flex flex-wrap gap-3">
+						<a
+							href="/#contact"
+							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						>
+							Book a 15-Min Call
+						</a>
+						<a
+							href="/solutions/aec-talent/individuals/"
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						>
+							See options
+						</a>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		{/* FAQ */}
+		<section class="mt-12" aria-labelledby="faq-aec">
+			<h2 id="faq-aec" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">FAQ</h2>
+			<div class="mt-6 grid gap-3">
+				{faqs.map((item) => (
+					<details class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+						<summary class="cursor-pointer list-none text-sm font-semibold text-slate-100">{item.q}</summary>
+						<p class="mt-3 text-sm leading-relaxed text-slate-300">{item.a}</p>
+					</details>
+				))}
+			</div>
+		</section>
+
+		{/* FINAL CTA */}
+		<section class="mt-14 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
+			<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+				<div>
+					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to add AEC capacity?</h2>
+					<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+						Book a call to discuss your standards and timeline — or review engagement options.
+					</p>
+				</div>
+				<div class="flex flex-wrap gap-3">
+					<a
+						href="/#contact"
+						class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Book a 15-Min Call
+					</a>
+					<a
+						href="/solutions/aec-talent/teams/"
+						class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						View team scaling
+					</a>
+				</div>
+			</div>
+		</section>
 	</main>
+
+	<div class="mx-auto max-w-6xl px-6">
+		<ContactSection subject={`${brand} — new inquiry (AEC solution)`} />
+	</div>
 
 	<Footer />
 </Layout>
