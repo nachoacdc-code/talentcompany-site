@@ -1,12 +1,15 @@
 ---
-// AUTO-SCAFFOLD — to be filled with copy.
 import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
+import ContactSection from '../../../components/ContactSection.astro';
 import Footer from '../../../components/Footer.astro';
 
+const brand = 'TalentCompany';
+
 const meta = {
-	title: 'Creative & Design Talent — Dedicated | TalentCompany',
-	description: 'TODO: Add description.',
+	title: `Dedicated Remote Designer Seat | ${brand}`,
+	description:
+		'Hire a dedicated remote designer seat for consistent weekly output. Brand-aligned execution, fast iteration, and month-to-month flexibility.',
 };
 
 const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
@@ -17,11 +20,182 @@ const canonical = new URL('/solutions/creatives-design/dedicated/', baseUrl).toS
 	<MetaHead slot="head" title={meta.title} description={meta.description} canonical={canonical} />
 
 	<main class="mx-auto max-w-6xl px-6 py-12 sm:py-14">
-		<h1 class="text-3xl font-semibold tracking-tight text-white sm:text-4xl">Dedicated Creative &amp; Design Talent</h1>
-		<p class="mt-4 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
-			TODO: Scaffold page for dedicated designers/creatives.
-		</p>
+		{/* HERO */}
+		<section class="relative overflow-hidden">
+			<div class="grid items-center gap-10 lg:grid-cols-2">
+				<div>
+					<p class="text-sm font-semibold tracking-wide text-sky-300">Creative &amp; Design</p>
+					<h1 class="mt-4 text-4xl font-semibold tracking-tight text-white sm:text-5xl">
+						Dedicated Remote Designer Seat
+					</h1>
+					<p class="mt-4 max-w-prose text-base leading-relaxed text-slate-300 sm:text-lg">
+						A dedicated designer embedded in your team for consistent weekly output — brand-aligned execution, fast
+						iteration, and month-to-month flexibility.
+					</p>
+
+					<div class="mt-8 flex flex-wrap gap-3">
+						<a
+							href="/#contact"
+							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						>
+							Book a 15-Min Call
+						</a>
+						<a
+							href="/solutions/creatives-design/"
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						>
+							Back to overview
+						</a>
+					</div>
+				</div>
+
+				<div class="relative">
+					<div class="rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 shadow-sm">
+						<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">Best for</p>
+						<ul class="mt-4 grid gap-3 sm:grid-cols-2">
+							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-sm font-semibold text-slate-100">Consistent demand</p>
+								<p class="mt-2 text-sm text-slate-300">Teams shipping weekly and needing steady capacity.</p>
+							</li>
+							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-sm font-semibold text-slate-100">Fast iteration</p>
+								<p class="mt-2 text-sm text-slate-300">Rapid feedback loops with fewer handoffs.</p>
+							</li>
+							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-sm font-semibold text-slate-100">Brand consistency</p>
+								<p class="mt-2 text-sm text-slate-300">Ongoing work aligned to your system and standards.</p>
+							</li>
+							<li class="rounded-xl border border-slate-800 bg-slate-900/40 p-4">
+								<p class="text-sm font-semibold text-slate-100">Embedded support</p>
+								<p class="mt-2 text-sm text-slate-300">Design that feels like an in-house teammate.</p>
+							</li>
+						</ul>
+					</div>
+					<div class="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
+					<div class="pointer-events-none absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-indigo-500/10 blur-3xl" />
+				</div>
+			</div>
+		</section>
+
+		{/* WEEKLY OUTPUT EXAMPLES */}
+		<section class="mt-12" aria-labelledby="weekly-output">
+			<h2 id="weekly-output" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+				Weekly output examples
+			</h2>
+			<p class="mt-3 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+				Examples vary by scope and complexity — here are common patterns.
+			</p>
+			<div class="mt-6 grid gap-4 md:grid-cols-3">
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-sm font-semibold text-slate-100">Marketing</p>
+					<ul class="mt-3 grid gap-2 text-sm text-slate-300">
+						<li>Ad creative variations</li>
+						<li>Landing page sections</li>
+						<li>Email / lifecycle assets</li>
+					</ul>
+				</div>
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-sm font-semibold text-slate-100">Brand</p>
+					<ul class="mt-3 grid gap-2 text-sm text-slate-300">
+						<li>Brand system components</li>
+						<li>Social templates</li>
+						<li>Pitch deck slides</li>
+					</ul>
+				</div>
+				<div class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+					<p class="text-sm font-semibold text-slate-100">Product</p>
+					<ul class="mt-3 grid gap-2 text-sm text-slate-300">
+						<li>UI support for features</li>
+						<li>Design system updates</li>
+						<li>UX improvements / flows</li>
+					</ul>
+				</div>
+			</div>
+		</section>
+
+		{/* ROLES */}
+		<section class="mt-12" aria-labelledby="roles-dedicated">
+			<h2 id="roles-dedicated" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+				Common roles for a designer seat
+			</h2>
+			<div class="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+				{['Brand / Visual Designer', 'Marketing / Creative Designer', 'Presentation / Deck Designer', 'Product / UI Support'].map((r) => (
+					<div class="rounded-2xl border border-slate-800 bg-slate-900/40 px-5 py-4">
+						<p class="text-sm font-semibold text-slate-100">{r}</p>
+						<p class="mt-1 text-xs text-slate-400">Role placeholder</p>
+					</div>
+				))}
+			</div>
+			<div class="mt-6">
+				<a
+					href="/roles/"
+					class="inline-flex items-center gap-2 text-sm font-semibold text-sky-300 transition hover:text-sky-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				>
+					Browse roles <span aria-hidden="true">→</span>
+				</a>
+			</div>
+		</section>
+
+		{/* MATCHING PROCESS */}
+		<section class="mt-12" aria-labelledby="process-dedicated">
+			<h2 id="process-dedicated" class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+				Matching process
+			</h2>
+			<ol class="mt-6 grid gap-4 lg:grid-cols-4">
+				{[
+					{ title: 'Scope + standards', body: 'Brand guidelines, tools, stakeholders, cadence, and priorities.' },
+					{ title: 'Candidates in 48 hours', body: 'We propose vetted designers aligned to your needs.' },
+					{ title: 'Interview (optional)', body: 'Meet top matches or start immediately.' },
+					{ title: 'Start shipping', body: 'Fast onboarding + weekly delivery rhythm.' },
+				].map((step, idx) => (
+					<li class="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+						<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Step {idx + 1}</p>
+						<p class="mt-2 text-sm font-semibold text-slate-100">{step.title}</p>
+						<p class="mt-2 text-sm leading-relaxed text-slate-300">{step.body}</p>
+					</li>
+				))}
+			</ol>
+		</section>
+
+		{/* DESIGN BRIEF KIT */}
+		<section class="mt-12 rounded-2xl border border-slate-800 bg-slate-900/40 p-6" aria-labelledby="brief-kit">
+			<h2 id="brief-kit" class="text-xl font-semibold text-white">Design Brief Kit</h2>
+			<p class="mt-3 text-sm leading-relaxed text-slate-300 sm:text-base">
+				{/* TODO: Add downloadable brief kit assets. */}
+				Placeholder: brief kit template + intake checklist (to be filled).
+			</p>
+		</section>
+
+		{/* FINAL CTA */}
+		<section class="mt-14 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/60 to-slate-950 p-6 sm:p-8">
+			<div class="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
+				<div>
+					<h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Ready to add a designer seat?</h2>
+					<p class="mt-2 max-w-prose text-sm leading-relaxed text-slate-300 sm:text-base">
+						Book a call and we’ll match a dedicated designer aligned to your brand and workflow.
+					</p>
+				</div>
+				<div class="flex flex-wrap gap-3">
+					<a
+						href="/#contact"
+						class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Book a 15-Min Call
+					</a>
+					<a
+						href="/solutions/creatives-design/pm-led/"
+						class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					>
+						Need a team instead?
+					</a>
+				</div>
+			</div>
+		</section>
 	</main>
+
+	<div class="mx-auto max-w-6xl px-6">
+		<ContactSection subject={`${brand} — new inquiry (design dedicated)`} />
+	</div>
 
 	<Footer />
 </Layout>
