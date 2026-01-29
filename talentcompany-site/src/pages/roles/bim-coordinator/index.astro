@@ -4,6 +4,7 @@ import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
 import ContactSection from '../../../components/ContactSection.astro';
 import Footer from '../../../components/Footer.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'TalentCompany';
 const roleName = 'BIM Coordinator';
@@ -15,6 +16,9 @@ const meta = {
 
 const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
 const canonical = new URL('/roles/bim-coordinator/', baseUrl).toString();
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
 ---
 
 <Layout>
@@ -29,8 +33,10 @@ const canonical = new URL('/roles/bim-coordinator/', baseUrl).toString();
 			</p>
 			<div class="mt-6 flex flex-wrap gap-3">
 				<a
-					href="/#contact"
+					href={bookingUrl}
+					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
 					class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+					data-book-call
 				>
 					Book a 15-Min Call
 				</a>

@@ -1,0 +1,397 @@
+---
+import { BOOKING_URL, getFormspreeAction, isCalendlyUrl, isExternalUrl } from '../lib/cta';
+
+export type Props = {
+	/** Optional default subject for submissions */
+	subject?: string;
+};
+
+const subject = Astro.props.subject ?? 'TalentCompany — Tell Us Your Needs';
+const formAction = getFormspreeAction();
+const bookingUrl = BOOKING_URL;
+const shouldLoadCalendlyWidget = isCalendlyUrl(bookingUrl);
+const bookingExternal = isExternalUrl(bookingUrl);
+---
+
+<dialog
+	id="tell-us-modal"
+	class="backdrop:bg-black/60 backdrop:backdrop-blur-sm rounded-2xl border border-slate-800 bg-slate-950 text-slate-100 shadow-2xl shadow-black/40"
+	aria-label="Tell us your needs"
+>
+	<div class="w-[min(720px,calc(100vw-2rem))] p-5 sm:p-6">
+		<div class="flex items-start justify-between gap-4">
+			<div>
+				<p class="text-xs font-semibold uppercase tracking-wide text-sky-300">Tell us your needs</p>
+				<h2 class="mt-2 text-xl font-semibold tracking-tight text-white sm:text-2xl">Get matched fast</h2>
+				<p class="mt-2 text-sm leading-relaxed text-slate-300">
+					Share a few details and we’ll reply with the best engagement model and next steps.
+				</p>
+			</div>
+			<button
+				type="button"
+				class="rounded-xl border border-slate-800 bg-slate-900/60 px-3 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+				data-tell-us-close
+			>
+				Close
+			</button>
+		</div>
+
+		<div class="mt-5 grid gap-4 lg:grid-cols-3">
+			<form
+				class="lg:col-span-2 rounded-2xl border border-slate-800 bg-slate-900/40 p-5"
+				method="POST"
+				action={formAction || undefined}
+				data-tell-us-form
+				novalidate
+			>
+				<div class="grid gap-4 sm:grid-cols-2">
+					<div class="sm:col-span-1">
+						<label class="text-sm font-medium text-slate-200" for="t-name">Name</label>
+						<input
+							id="t-name"
+							name="name"
+							autocomplete="name"
+							required
+							class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						/>
+					</div>
+
+					<div class="sm:col-span-1">
+						<label class="text-sm font-medium text-slate-200" for="t-email">Work email</label>
+						<input
+							id="t-email"
+							name="email"
+							type="email"
+							autocomplete="email"
+							required
+							class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						/>
+					</div>
+
+					<div class="sm:col-span-2">
+						<label class="text-sm font-medium text-slate-200" for="t-company">Company</label>
+						<input
+							id="t-company"
+							name="company"
+							autocomplete="organization"
+							required
+							class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						/>
+					</div>
+
+					<div class="sm:col-span-2">
+						<label class="text-sm font-medium text-slate-200" for="t-need">Role / need</label>
+						<textarea
+							id="t-need"
+							name="need"
+							required
+							class="mt-2 min-h-28 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							placeholder="Example: Architectural Designer (Revit), 40h/week, redlines + CD set support, start in ~2 weeks."
+						/>
+					</div>
+
+					<div class="sm:col-span-1">
+						<label class="text-sm font-medium text-slate-200" for="t-budget">Budget range</label>
+						<select
+							id="t-budget"
+							name="budget_range"
+							required
+							class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						>
+							<option value="" selected disabled>Select…</option>
+							<option value="under-2k">Under $2k / month</option>
+							<option value="2k-5k">$2k–$5k / month</option>
+							<option value="5k-10k">$5k–$10k / month</option>
+							<option value="10k-plus">$10k+ / month</option>
+							<option value="not-sure">Not sure yet</option>
+						</select>
+					</div>
+
+					<div class="sm:col-span-1">
+						<label class="text-sm font-medium text-slate-200" for="t-start">Preferred start</label>
+						<select
+							id="t-start"
+							name="preferred_start"
+							required
+							class="mt-2 w-full rounded-xl border border-slate-800 bg-slate-950/60 px-4 py-2 text-sm text-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						>
+							<option value="" selected disabled>Select…</option>
+							<option value="asap">ASAP</option>
+							<option value="1-2-weeks">1–2 weeks</option>
+							<option value="2-4-weeks">2–4 weeks</option>
+							<option value="flexible">Flexible</option>
+						</select>
+					</div>
+				</div>
+
+				{/* Honeypot */}
+				<div class="hidden" aria-hidden="true">
+					<label for="t-website">Website</label>
+					<input id="t-website" name="website" tabindex="-1" autocomplete="off" />
+				</div>
+
+				<input type="hidden" name="_subject" value={subject} />
+				<input type="hidden" name="page_url" value="" data-tell-us-page-url />
+				<input type="hidden" name="cta_source" value="" data-tell-us-cta-source />
+				<input type="hidden" name="cta_role" value="" data-tell-us-cta-role />
+
+				<div class="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+					<button
+						type="submit"
+						class="inline-flex items-center justify-center rounded-xl bg-sky-500 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:opacity-60"
+						data-tell-us-submit
+					>
+						Send
+					</button>
+
+					<div class="flex flex-wrap items-center gap-3">
+						<a
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							data-book-call
+						>
+							Prefer to book a call
+						</a>
+					</div>
+				</div>
+
+				<div class="mt-4">
+					<p class="text-sm text-slate-300" data-tell-us-status hidden></p>
+					<div class="mt-3 flex flex-wrap gap-3" data-tell-us-actions hidden>
+						<button
+							type="button"
+							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-4 py-2 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400"
+							data-tell-us-download
+						>
+							Download CSV
+						</button>
+					</div>
+				</div>
+
+				<p class="mt-4 text-xs leading-relaxed text-slate-400">
+					{formAction ? (
+						<>
+							This form posts to Formspree. You can change it via{' '}
+							<code class="rounded bg-slate-800 px-1.5 py-0.5">PUBLIC_FORMSPREE_ACTION</code>.
+						</>
+					) : (
+						<>
+							No Formspree endpoint configured — submissions will be saved locally in this browser (and you can download CSV).
+						</>
+					)}
+				</p>
+			</form>
+
+			<aside class="rounded-2xl border border-slate-800 bg-slate-900/40 p-5">
+				<p class="text-xs font-semibold uppercase tracking-wide text-slate-400">What happens next</p>
+				<ul class="mt-4 grid gap-2 text-sm text-slate-300">
+					<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">We confirm scope + timeline</li>
+					<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">You get vetted options (typically ~48 hours)</li>
+					<li class="rounded-xl border border-slate-800 bg-slate-950/40 px-4 py-3">Interview optional, start month-to-month</li>
+				</ul>
+			</aside>
+		</div>
+	</div>
+</dialog>
+
+{shouldLoadCalendlyWidget ? (
+	<script
+		is:inline
+		src="https://assets.calendly.com/assets/external/widget.js"
+		async
+	></script>
+) : null}
+
+<script is:inline>
+	{`(() => {
+  const dialog = document.getElementById('tell-us-modal');
+  if (!(dialog instanceof HTMLDialogElement)) return;
+
+  const form = dialog.querySelector('[data-tell-us-form]');
+  const status = dialog.querySelector('[data-tell-us-status]');
+  const actions = dialog.querySelector('[data-tell-us-actions]');
+  const downloadBtn = dialog.querySelector('[data-tell-us-download]');
+  const submitBtn = dialog.querySelector('[data-tell-us-submit]');
+
+  const pageUrl = dialog.querySelector('[data-tell-us-page-url]');
+  const ctaSource = dialog.querySelector('[data-tell-us-cta-source]');
+  const ctaRole = dialog.querySelector('[data-tell-us-cta-role]');
+
+  function setStatus(message, type) {
+    if (!status) return;
+    status.hidden = !message;
+    status.textContent = message || '';
+    status.className = 'text-sm';
+    if (type === 'success') status.className += ' text-emerald-300';
+    if (type === 'error') status.className += ' text-rose-300';
+    if (type === 'info') status.className += ' text-slate-300';
+  }
+
+  function setActionsVisible(visible) {
+    if (actions) actions.hidden = !visible;
+  }
+
+  function openDialog(sourceLabel, roleLabel) {
+    // Reset UI each time
+    setStatus('', 'info');
+    setActionsVisible(false);
+    if (submitBtn) submitBtn.removeAttribute('disabled');
+    if (pageUrl) pageUrl.value = window.location.href;
+    if (ctaSource) ctaSource.value = sourceLabel || '';
+    if (ctaRole) ctaRole.value = roleLabel || '';
+
+    dialog.showModal();
+    const first = dialog.querySelector('input, textarea, select, button');
+    first?.focus?.();
+  }
+
+  function closeDialog() {
+    dialog.close();
+  }
+
+  dialog.querySelectorAll('[data-tell-us-close]').forEach((btn) => {
+    btn.addEventListener('click', closeDialog);
+  });
+
+  // Close on backdrop click
+  dialog.addEventListener('click', (e) => {
+    const rect = dialog.getBoundingClientRect();
+    const inDialog =
+      rect.top <= e.clientY &&
+      e.clientY <= rect.top + rect.height &&
+      rect.left <= e.clientX &&
+      e.clientX <= rect.left + rect.width;
+    if (!inDialog) closeDialog();
+  });
+
+  // Open modal for any CTA annotated with data-open-tell-us (or legacy attribute)
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+
+    const opener = target.closest('[data-open-tell-us],[data-open-contact-modal]');
+    if (opener) {
+      e.preventDefault();
+      const sourceLabel = opener.getAttribute('data-open-tell-us') || opener.getAttribute('data-open-contact-modal') || '';
+      const roleLabel = opener.getAttribute('data-role') || opener.getAttribute('data-cta-role') || '';
+      openDialog(sourceLabel, roleLabel);
+      return;
+    }
+
+    // Calendly popup wiring for Book a Call links if available.
+    const book = target.closest('[data-book-call]');
+    if (book) {
+      const url = book.getAttribute('href') || '';
+      if (/calendly\\.com/i.test(url) && typeof window.Calendly?.initPopupWidget === 'function') {
+        e.preventDefault();
+        window.Calendly.initPopupWidget({ url });
+      }
+    }
+  });
+
+  // Local save utilities
+  const STORAGE_KEY = 'talentcompany_submissions_v1';
+  function readLocal() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+    } catch {
+      return [];
+    }
+  }
+  function writeLocal(list) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+    } catch {}
+  }
+  function toCsvRow(obj) {
+    const cols = ['timestamp','page_url','cta_source','cta_role','name','email','company','need','budget_range','preferred_start'];
+    const esc = (v) => String(v ?? '').replaceAll('"', '""');
+    return cols.map((c) => '"' + esc(obj[c]) + '"').join(',');
+  }
+  function downloadCsv() {
+    const list = readLocal();
+    const header = 'timestamp,page_url,cta_source,cta_role,name,email,company,need,budget_range,preferred_start';
+    const rows = [header, ...list.map(toCsvRow)];
+    const blob = new Blob([rows.join('\\n')], { type: 'text/csv;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'submissions.csv';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+  }
+  downloadBtn?.addEventListener('click', downloadCsv);
+
+  // Submit handler (fetch Formspree if configured; always keep local backup)
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (!(form instanceof HTMLFormElement)) return;
+
+    // Use built-in constraints first
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      setStatus('Please complete the required fields.', 'error');
+      return;
+    }
+
+    const fd = new FormData(form);
+    const payload = {
+      timestamp: new Date().toISOString(),
+      page_url: String(fd.get('page_url') || ''),
+      cta_source: String(fd.get('cta_source') || ''),
+      cta_role: String(fd.get('cta_role') || ''),
+      name: String(fd.get('name') || ''),
+      email: String(fd.get('email') || ''),
+      company: String(fd.get('company') || ''),
+      need: String(fd.get('need') || ''),
+      budget_range: String(fd.get('budget_range') || ''),
+      preferred_start: String(fd.get('preferred_start') || ''),
+    };
+
+    // Always store locally as backup
+    const current = readLocal();
+    current.unshift(payload);
+    writeLocal(current.slice(0, 200)); // cap
+
+    const action = form.getAttribute('action') || '';
+    const canPost = !!action;
+
+    try {
+      if (submitBtn) submitBtn.setAttribute('disabled', 'disabled');
+      setStatus('Sending…', 'info');
+
+      if (!canPost) {
+        setStatus('Saved locally. Configure Formspree to receive submissions automatically.', 'success');
+        setActionsVisible(true);
+        form.reset();
+        return;
+      }
+
+      const res = await fetch(action, {
+        method: 'POST',
+        body: fd,
+        headers: { Accept: 'application/json' },
+      });
+
+      if (!res.ok) {
+        setStatus('We saved your submission locally, but sending failed. Please try again or book a call.', 'error');
+        setActionsVisible(true);
+        return;
+      }
+
+      setStatus('Thanks — we received your details and will reply shortly.', 'success');
+      setActionsVisible(false);
+      form.reset();
+    } catch {
+      setStatus('We saved your submission locally, but sending failed. Please try again or book a call.', 'error');
+      setActionsVisible(true);
+    } finally {
+      submitBtn?.removeAttribute('disabled');
+    }
+  });
+})();`}
+</script>
+

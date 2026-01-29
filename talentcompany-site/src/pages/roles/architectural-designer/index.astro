@@ -7,6 +7,7 @@ import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
 import ContactSection from '../../../components/ContactSection.astro';
 import Footer from '../../../components/Footer.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'TalentCompany';
 
@@ -20,6 +21,9 @@ const baseUrl = Astro.site ?? 'https://talentcompany-site.vercel.app';
 const canonical = new URL('/roles/architectural-designer/', baseUrl).toString();
 
 const roleName = 'Architectural Designer';
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
 ---
 
 <Layout>
@@ -42,13 +46,17 @@ const roleName = 'Architectural Designer';
 					<div class="mt-8 flex flex-wrap gap-3">
 						<a
 							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="/#contact"
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
+							data-book-call
 						>
 							Book a 15-Min Call
 						</a>
 						<a
 							class="inline-flex items-center justify-center rounded-xl border border-slate-800 bg-slate-900/60 px-5 py-2.5 text-sm font-semibold text-slate-100 transition hover:bg-slate-900 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
-							href="#tell-us"
+							href="/#contact"
+							data-open-tell-us="role-hero"
+							data-role={roleName}
 						>
 							Tell Us Your Needs
 						</a>
@@ -190,8 +198,10 @@ const roleName = 'Architectural Designer';
 				</div>
 				<div class="flex flex-wrap gap-3">
 					<a
-						href="/#contact"
+						href={bookingUrl}
+						{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
 						class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						data-book-call
 					>
 						Book a 15-Min Call
 					</a>

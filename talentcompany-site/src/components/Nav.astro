@@ -1,10 +1,15 @@
 ---
+import { BOOKING_URL, isExternalUrl } from '../lib/cta';
+
 const pathname = Astro.url.pathname;
 
 const isHome = pathname === '/';
 const isSolutions = pathname.startsWith('/solutions/');
 const isRoles = pathname.startsWith('/roles/');
 const isHowItWorks = pathname.startsWith('/how-it-works/');
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
 
 const linkBase =
 	'transition hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950';
@@ -24,7 +29,7 @@ const links = {
 	},
 	roles: { label: 'Roles', href: '/roles/' },
 	howItWorks: { label: 'How It Works', href: '/how-it-works/' },
-	cta: { label: 'Book a Call', href: '/#contact' },
+	cta: { label: 'Book a Call', href: bookingUrl },
 };
 ---
 
@@ -110,7 +115,9 @@ const links = {
 
 			<a
 				href={links.cta.href}
+				{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
 				class="ml-1 inline-flex items-center justify-center rounded bg-sky-600 px-4 py-2 font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+				data-book-call
 			>
 				{links.cta.label}
 			</a>
@@ -198,7 +205,9 @@ const links = {
 
 				<a
 					href={links.cta.href}
+					{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
 					class="mt-2 inline-flex w-full items-center justify-center rounded bg-sky-600 px-4 py-3 font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300"
+					data-book-call
 				>
 					{links.cta.label}
 				</a>

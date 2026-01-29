@@ -3,6 +3,7 @@ import Layout from '../../../layouts/Layout.astro';
 import MetaHead from '../../../components/MetaHead.astro';
 import ContactSection from '../../../components/ContactSection.astro';
 import Footer from '../../../components/Footer.astro';
+import { BOOKING_URL, isExternalUrl } from '../../../lib/cta';
 
 const brand = 'TalentCompany';
 
@@ -33,6 +34,9 @@ const faqs = [
 		a: 'Yes — pods are month-to-month and can scale up or down. We also offer a free replacement guarantee.',
 	},
 ];
+
+const bookingUrl = BOOKING_URL;
+const bookingExternal = isExternalUrl(bookingUrl);
 ---
 
 <Layout>
@@ -52,8 +56,10 @@ const faqs = [
 
 					<div class="mt-8 flex flex-wrap gap-3">
 						<a
-							href="/#contact"
+							href={bookingUrl}
+							{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
 							class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+							data-book-call
 						>
 							Book a 15-Min Call
 						</a>
@@ -192,8 +198,10 @@ const faqs = [
 				</div>
 				<div class="flex flex-wrap gap-3">
 					<a
-						href="/#contact"
+						href={bookingUrl}
+						{...(bookingExternal ? { target: '_blank', rel: 'noreferrer' } : {})}
 						class="inline-flex items-center justify-center rounded bg-sky-600 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-sky-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+						data-book-call
 					>
 						Book a 15-Min Call
 					</a>

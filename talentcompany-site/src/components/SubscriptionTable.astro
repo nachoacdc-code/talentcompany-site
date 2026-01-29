@@ -1,4 +1,6 @@
 ---
+import { BOOKING_URL } from '../lib/cta';
+
 export type Plan = {
 	name: string;
 	description?: string;
@@ -28,7 +30,7 @@ const samplePlans: Plan[] = [
 		credits: '~40 credits / month',
 		bestFor: 'Small teams and quick turnarounds',
 		includes: ['Single designer lane', 'Async collaboration', 'Simple queue & delivery'],
-		cta: { label: 'Start Starter', href: '/#contact' },
+		cta: { label: 'Start Starter', href: BOOKING_URL },
 	},
 	{
 		name: 'Growth',
@@ -36,7 +38,7 @@ const samplePlans: Plan[] = [
 		credits: '~100–120 credits / month',
 		bestFor: 'Marketing and product teams shipping weekly',
 		includes: ['PM-led workflow', 'Prioritized queue', 'Weekly planning cadence'],
-		cta: { label: 'Choose Growth', href: '/#contact' },
+		cta: { label: 'Choose Growth', href: BOOKING_URL },
 		highlight: true,
 	},
 	{
@@ -45,7 +47,7 @@ const samplePlans: Plan[] = [
 		credits: '~160–200 credits / month',
 		bestFor: 'High-volume requests across multiple surfaces',
 		includes: ['Multi-stream capacity', 'Reporting & rollups', 'Flexible scope week to week'],
-		cta: { label: 'Talk to us', href: '/#contact' },
+		cta: { label: 'Talk to us', href: BOOKING_URL },
 	},
 ];
 
