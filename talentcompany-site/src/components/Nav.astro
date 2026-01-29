@@ -376,6 +376,12 @@ const links = {
     const summary = details.querySelector('summary');
     const sync = () => summary?.setAttribute('aria-expanded', String(details.hasAttribute('open')));
     sync();
+    // Close other dropdowns immediately when a summary is clicked/opened.
+    summary?.addEventListener('click', () => {
+      header.querySelectorAll('details[data-nav-dropdown][open]').forEach((other) => {
+        if (other !== details) other.removeAttribute('open');
+      });
+    });
     details.addEventListener('toggle', () => {
       // Ensure only one dropdown is open at a time.
       if (details.hasAttribute('open')) {
